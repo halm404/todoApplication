@@ -7,6 +7,7 @@ import ListPage from "../pages/ListPage";
 import TaskDetailsPage from "../pages/TaskDetailsPage";
 import SettingsPage from "../pages/SettingsPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 export default function AppRoutes() {
   return (
@@ -14,14 +15,25 @@ export default function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/lists/:listId" element={<ListPage />} />
+      <Route path="/lists/:listId" element={
+        <ProtectedRoute>
+          <ListPage />
+        </ProtectedRoute>} />
       <Route
         path="/tasks/:taskId"
-        element={<TaskDetailsPage />}
+        element={
+          <ProtectedRoute>
+            <TaskDetailsPage />
+          </ProtectedRoute>
+        }
       />
       <Route
         path="/settings"
-        element={<SettingsPage />}
+        element={
+          <ProtectedRoute>
+            <SettingsPage />
+          </ProtectedRoute>
+        }
       />
       <Route
         path="*"
