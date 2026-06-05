@@ -1,9 +1,10 @@
 from django.urls import path, include
 
-from .views import tasks, lists, list_detail
+from .views import lists, list_detail, list_tasks, task_detail
 
 urlpatterns = [
-    path('tasks/', tasks),
     path('lists/', lists),
-    path('list/<int:id>', list_detail),
+    path('lists/<int:id>/', list_detail),
+    path('lists/<int:list_id>/tasks/', list_tasks),
+    path('tasks/<int:id>/', task_detail),
 ]
