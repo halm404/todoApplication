@@ -17,9 +17,9 @@ class TodoListViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = TodoList.objects.all()
     serializer_class = TodoListSerializer
 
-# API for tasks
+# API for all tasks
 @api_view(['GET', 'POST'])
-def task_list(request):
+def tasks(request):
     if request.method == 'GET':
         tasks = Task.objects.all()
         serializer = TaskSerializer(tasks, many=True)
@@ -41,13 +41,13 @@ def task_list(request):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-# API for lists
+# GET all lists or create new list
 @api_view(['GET', 'POST'])
-def list_collection(request):
+def lists(request):
+
     if request.method == 'GET':
         lists = TodoList.objects.all()
         serializer = TodoListSerializer(lists, many=True)
-
         return Response(serializer.data)
 
     elif request.method == 'POST':
@@ -63,4 +63,42 @@ def list_collection(request):
         return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
+        )
+
+# GET specific list, PUT new data, and DELETE list
+@api_view(['GET', 'PUT', 'DELETE'])
+def list_detail(request, id):
+
+    try:
+        todo_list = TodoList.objects.get(id=id)
+    except TodoList.DoesNotExist:
+        return Response(
+            {"error": "List not found"},
+            status=status.HTTP_404_NOT_FOUND
+        )
+
+    if request.method == 'GET':
+        serializer = TodoListSerializer(todo_list)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = TodoListSerializer(
+            todo_list,
+            data=request.data
+        )
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    elif request.method == 'DELETE':
+        todo_list.delete()
+
+        return Response(
+            status=status.HTTP_204_NO_CONTENT
         )
