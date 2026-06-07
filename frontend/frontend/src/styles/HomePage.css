@@ -86,7 +86,7 @@ body {
 
 .banner p {
     margin: 0;
-    color: var(--text-dim);
+    color: var(--text);
     font-size: 1rem;
     letter-spacing: 2px;
 }
@@ -211,18 +211,57 @@ body {
 
 .empty-message {
     padding: 30px;
-
     text-align: center;
-
     border: 2px dashed var(--border);
-
     background: var(--white);
-
     color: var(--text-dim);
 }
 
 .stat-row {
     margin-bottom: 10px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.nav-button {
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 3px solid var(--soft-periwinkle);
+    background: var(--soft-periwinkle);
+    color: var(--text);
+    font-weight: bold;
+
+    clip-path: polygon(3px 0,
+            calc(100% - 3px) 0,
+            calc(100% - 3px) 3px,
+            100% 3px,
+            100% calc(100% - 3px),
+            calc(100% - 3px) calc(100% - 3px),
+            calc(100% - 3px) 100%,
+            3px 100%,
+            3px calc(100% - 3px),
+            0 calc(100% - 3px),
+            0 3px,
+            3px 3px);
+
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
+.nav-button:hover {
+    background: var(--periwinkle-darker);
+    border: 3px solid var(--periwinkle-darker);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.nav-button:active {
+    transform: translateY(1px);
 }
 
 @media (max-width: 1450px) {
