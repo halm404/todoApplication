@@ -1,0 +1,246 @@
+:root {
+    --soft-periwinkle: #ffc759ff;
+    --periwinkle: rgb(255, 171, 192);
+    --periwinkle-darker: rgb(233, 119, 148);
+    --white: rgb(255, 255, 255);
+    --antique-white: #f8f7ff;
+    --peach-fuzz: #e8e9edff;
+
+    --background: var(--white);
+    --panel: var(--antique-white);
+    --panel-light: var(--white);
+
+    --border: var(--soft-periwinkle);
+
+    --accent: var(--soft-periwinkle);
+    --accent-light: var(--periwinkle);
+
+    --text: #4f4f6b;
+    --text-dim: #7a7a96;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+
+    background-color: var(--white);
+
+    background-image:
+        repeating-linear-gradient(90deg,
+            #f8f7ff 0px,
+            #f8f7ff 4px,
+            #efe3de 4px,
+            #efe3de 5px);
+}
+
+.homepage {
+    width: 1400px;
+    margin: 20px auto;
+}
+
+.banner {
+    height: 260px;
+    border: 3px solid var(--border);
+
+    background:
+        repeating-linear-gradient(90deg,
+            var(--periwinkle) 0px,
+            var(--periwinkle) 30px,
+            var(--soft-periwinkle) 30px,
+            var(--soft-periwinkle) 31px);
+
+    clip-path: polygon(3px 0,
+            calc(100% - 3px) 0,
+            calc(100% - 3px) 3px,
+            100% 3px,
+            100% calc(100% - 3px),
+            calc(100% - 3px) calc(100% - 3px),
+            calc(100% - 3px) 100%,
+            3px 100%,
+            3px calc(100% - 3px),
+            0 calc(100% - 3px),
+            0 3px,
+            3px 3px);
+}
+
+.banner-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 4rem;
+    color: var(--white);
+    text-shadow:
+        3px 3px 0 rgba(79, 79, 107, 0.35);
+}
+
+.banner p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.sidebar-left,
+.sidebar-right {
+    gap: 1rem;
+    display: grid;
+}
+
+.main-layout {
+    margin-top: 20px;
+    display: grid;
+    gap: 24px;
+
+    grid-template-columns:
+        280px 1fr 280px;
+
+}
+
+.window {
+    border: 3px solid var(--border);
+    background: var(--panel);
+
+    clip-path: polygon(3px 0,
+            calc(100% - 3px) 0,
+            calc(100% - 3px) 3px,
+            100% 3px,
+            100% calc(100% - 3px),
+            calc(100% - 3px) calc(100% - 3px),
+            calc(100% - 3px) 100%,
+            3px 100%,
+            3px calc(100% - 3px),
+            0 calc(100% - 3px),
+            0 3px,
+            3px 3px);
+}
+
+.window-title {
+    padding: 1rem;
+    color: var(--white);
+    border-bottom: 2px solid var(--border);
+    background: var(--soft-periwinkle);
+}
+
+.window-content {
+    padding: 20px;
+}
+
+.large-window {
+    min-height: 700px;
+}
+
+.action-button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: .5rem;
+    border: 2px solid var(--soft-periwinkle);
+    background: var(--periwinkle);
+    color: var(--text);
+    font-weight: bold;
+    cursor: pointer;
+    clip-path: polygon(3px 0,
+            calc(100% - 3px) 0,
+            calc(100% - 3px) 3px,
+            100% 3px,
+            100% calc(100% - 3px),
+            calc(100% - 3px) calc(100% - 3px),
+            calc(100% - 3px) 100%,
+            3px 100%,
+            3px calc(100% - 3px),
+            0 calc(100% - 3px),
+            0 3px,
+            3px 3px);
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
+.action-button:hover {
+    background: var(--periwinkle-darker);
+    color: var(--white);
+    background: var(--soft-periwinkle);
+    color: var(--ghost-white);
+    transform: translateY(-2px);
+}
+
+.action-button:active {
+    transform: translateY(2px);
+}
+
+.menu-button {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+    cursor: pointer;
+    clip-path: polygon(3px 0,
+            calc(100% - 3px) 0,
+            calc(100% - 3px) 3px,
+            100% 3px,
+            100% calc(100% - 3px),
+            calc(100% - 3px) calc(100% - 3px),
+            calc(100% - 3px) 100%,
+            3px 100%,
+            3px calc(100% - 3px),
+            0 calc(100% - 3px),
+            0 3px,
+            3px 3px);
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
+.menu-button:hover {
+    background: var(--peach-fuzz);
+    background: var(--soft-periwinkle);
+    transform: translateY(-2px);
+}
+
+.empty-message {
+    padding: 30px;
+
+    text-align: center;
+
+    border: 2px dashed var(--border);
+
+    background: var(--white);
+
+    color: var(--text-dim);
+}
+
+.stat-row {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1450px) {
+    .homepage {
+        width: 95%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .banner h1 {
+        font-size: 2rem;
+    }
+
+    .large-window {
+        min-height: 500px;
+    }
+}
