@@ -122,7 +122,7 @@ export default function HomePage() {
                 className="close-button"
                 onClick={() => setShowTaskModal(false)}
               >
-                X
+                x
               </button>
             </div>
             <div className="modal-content">
