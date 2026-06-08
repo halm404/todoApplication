@@ -28,7 +28,8 @@
 
 body {
     margin: 0;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif background-color: var(--white);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: var(--white);
 
     background-image:
         repeating-linear-gradient(90deg,
@@ -36,11 +37,6 @@ body {
             #f8f7ff 4px,
             #efe3de 4px,
             #efe3de 5px);
-}
-
-.homepage {
-    width: 1400px;
-    margin: 20px auto;
 }
 
 .banner {
@@ -200,38 +196,6 @@ body {
 
 .stat-row {
     margin-bottom: 10px;
-}
-
-.main-nav {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.nav-button {
-    text-decoration: none;
-    padding: 10px 16px;
-    border: 2px solid var(--white);
-    background: var(--yellow);
-    color: var(--white);
-    text-shadow: 1px 1px 0 var(--pink-darker);
-    font-weight: bold;
-    clip-path: var(--corner-pixel);
-
-    transition:
-        transform 0.1s ease,
-        background-color 0.1s ease;
-}
-
-.nav-button:hover {
-    background: var(--pink-darker);
-    border: 2px solid var(--pink-darker);
-    color: var(--white);
-    transform: translateY(-2px);
-}
-
-.nav-button:active {
-    transform: translateY(1px);
 }
 
 .pixel-input,

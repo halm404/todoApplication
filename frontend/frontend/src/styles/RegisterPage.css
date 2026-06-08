@@ -22,11 +22,6 @@
             2px 2px);
 }
 
-.register-page {
-    width: 1400px;
-    margin: 20px auto;
-}
-
 .register-layout {
     display: flex;
     justify-content: center;
@@ -84,7 +79,6 @@
 
 .register-window .nav-button {
     display: block;
-
     text-align: center;
 }
 
@@ -93,6 +87,13 @@
     transition:
         transform 0.1s ease,
         background-color 0.1s ease;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem auto;
+    width: fit-content;
 }
 
 @media (max-width: 1450px) {

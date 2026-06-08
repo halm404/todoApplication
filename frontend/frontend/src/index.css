@@ -1,0 +1,62 @@
+:root {
+    --yellow: #ffc759ff;
+    --pink: rgb(255, 171, 192);
+    --pink-darker: rgb(233, 119, 148);
+    --white: #f8f7ff;
+    --gray-light: #e8e9edff;
+    --gray-dark: #4f4f6b;
+    --gray: #7a7a96;
+
+    --border-yellow: 2px solid var(--yellow);
+    --corner-pixel: polygon(2px 0,
+            calc(100% - 2px) 0,
+            calc(100% - 2px) 2px,
+            100% 2px,
+            100% calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) 100%,
+            2px 100%,
+            2px calc(100% - 2px),
+            0 calc(100% - 2px),
+            0 2px,
+            2px 2px);
+}
+
+
+.page {
+    width: 1400px;
+    margin: 20px auto;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem auto;
+    width: fit-content;
+}
+
+.nav-button {
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 2px solid var(--pink);
+    background: var(--yellow);
+    color: var(--white);
+    text-shadow: 1px 1px 0 var(--pink-darker);
+    font-weight: bold;
+    clip-path: var(--corner-pixel);
+
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
+.nav-button:hover {
+    background: var(--pink-darker);
+    border: 2px solid var(--pink-darker);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.nav-button:active {
+    transform: translateY(1px);
+}

@@ -1,0 +1,69 @@
+.login-layout {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.login-window {
+    width: 500px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.register-link {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--text-dim);
+}
+
+.pixel-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+    font-family: inherit;
+}
+
+.pixel-input:focus {
+    outline: none;
+    border-color: var(--periwinkle-darker);
+}
+
+.login-form .action-button {
+    margin-top: 1rem;
+}
+
+.login-window .nav-button {
+    display: block;
+    text-align: center;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem auto;
+    width: fit-content;
+}
+
+@media (max-width: 1450px) {
+    .login-page {
+        width: 95%;
+    }
+}
+
+@media (max-width: 700px) {
+    .login-window {
+        width: 100%;
+    }
+
+    .banner h1 {
+        font-size: 2rem;
+    }
+}

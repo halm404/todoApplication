@@ -1,38 +1,19 @@
 import "../styles/HomePage.css";
 import { useState } from "react";
 import { Dialog } from "primereact/dialog";
-import { Link } from "react-router";
+import Navbar from "../components/Navbar";
 
 export default function HomePage() {
   const [showTaskModal, setShowTaskModal] = useState(false);
   const [showListModal, setShowListModal] = useState(false);
 
   return (
-    <div className="homepage">
+    <div className="page">
+      <Navbar />
       <header className="banner">
         <div className="banner-content">
           <h1>Todo Quest</h1>
           <p>Organize your tasks.</p>
-          <nav className="main-nav">
-            <Link
-              to="/login"
-              className="nav-button"
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="nav-button"
-            >
-              Register
-            </Link>
-            <Link
-              to="/settings"
-              className="nav-button"
-            >
-              Settings
-            </Link>
-          </nav>
         </div>
       </header>
       <div className="main-layout">

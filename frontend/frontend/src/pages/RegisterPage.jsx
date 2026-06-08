@@ -1,9 +1,11 @@
 import "../styles/RegisterPage.css";
 import { Link } from "react-router";
+import Navbar from "../components/Navbar";
 
 export default function RegisterPage() {
   return (
-    <div className="register-page">
+    <div className="page">
+      <Navbar />
       <header className="banner">
         <div className="banner-content">
           <h1>Todo Quest</h1>
