@@ -1,10 +1,10 @@
 import "../styles/HomePage.css";
 import { useState } from "react";
+import { Dialog } from "primereact/dialog";
 import { Link } from "react-router";
 
 export default function HomePage() {
   const [showTaskModal, setShowTaskModal] = useState(false);
-
   return (
     <div className="homepage">
       <header className="banner">
@@ -107,63 +107,41 @@ export default function HomePage() {
           </div>
         </aside>
       </div>
-      {showTaskModal && (
-        <div
-          className="modal-backdrop"
-          onClick={() => setShowTaskModal(false)}
-        >
-          <div
-            className="modal-window"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="modal-title-bar">
-              <span>Add Task</span>
-              <button
-                className="close-button"
-                onClick={() => setShowTaskModal(false)}
-              >
-                x
-              </button>
-            </div>
-            <div className="modal-content">
-              <label>
-                Title
-              </label>
-              <input
-                type="text"
-                className="pixel-input"
-              />
-              <label>
-                Description
-              </label>
-              <textarea
-                className="pixel-textarea"
-                rows="5"
-              />
-              <label>
-                Deadline
-              </label>
-              <input
-                type="datetime-local"
-                className="pixel-input"
-              />
-              <div className="modal-actions">
-                <button
-                  className="action-button"
-                >
-                  Save
-                </button>
-                <button
-                  className="menu-button"
-                  onClick={() => setShowTaskModal(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
+      <Dialog
+        header="Add Task"
+        visible={showTaskModal}
+        onHide={() => setShowTaskModal(false)}
+        draggable={false}
+      >
+        <div className="task-form">
+          <label>Title</label>
+          <input
+            type="text"
+            className="pixel-input"
+          />
+          <label>Description</label>
+          <textarea
+            rows="5"
+            className="pixel-textarea"
+          />
+          <label>Deadline</label>
+          <input
+            type="datetime-local"
+            className="pixel-input"
+          />
+          <div className="modal-actions">
+            <button className="save-button">
+              Save
+            </button>
+            <button
+              className="menu-button"
+              onClick={() => setShowTaskModal(false)}
+            >
+              Cancel
+            </button>
           </div>
         </div>
-      )}
+      </Dialog>
     </div>
   );
 }
