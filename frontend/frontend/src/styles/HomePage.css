@@ -252,6 +252,11 @@ body {
     transform: translateY(-2px);
 }
 
+.pixel-input:focus,
+.pixel-textarea:focus {
+    background-color: #4f4f6b;
+}
+
 .pixel-textarea {
     resize: vertical;
 }
