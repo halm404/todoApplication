@@ -7,7 +7,7 @@ import ListPage from "../pages/ListPage";
 import TaskDetailsPage from "../pages/TaskDetailsPage";
 import SettingsPage from "../pages/SettingsPage";
 import NotFoundPage from "../pages/NotFoundPage";
-import ProtectedRoute from "../components/ProtectedRoute";
+// import ProtectedRoute from "../components/ProtectedRoute";
 
 export default function AppRoutes() {
   return (
@@ -16,23 +16,25 @@ export default function AppRoutes() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/lists/:listId" element={
-        <ProtectedRoute>
-          <ListPage />
-        </ProtectedRoute>} />
+        // <ProtectedRoute>
+        <ListPage />
+        // </ProtectedRoute>
+      }
+      />
       <Route
         path="/tasks/:taskId"
         element={
-          <ProtectedRoute>
-            <TaskDetailsPage />
-          </ProtectedRoute>
+          // <ProtectedRoute>
+          <TaskDetailsPage />
+          // </ProtectedRoute>
         }
       />
       <Route
         path="/settings"
         element={
-          <ProtectedRoute>
-            <SettingsPage />
-          </ProtectedRoute>
+          // <ProtectedRoute>
+          <SettingsPage />
+          // </ProtectedRoute>
         }
       />
       <Route
