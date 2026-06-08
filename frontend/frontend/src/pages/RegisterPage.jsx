@@ -17,32 +17,36 @@ export default function RegisterPage() {
           </div>
           <div className="window-content">
             <div className="register-form">
-              <label>Username</label>
-              <input
-                type="text"
-                className="pixel-input"
-              />
-              <label>Email</label>
-              <input
-                type="email"
-                className="pixel-input"
-              />
-              <label>Password</label>
-              <input
-                type="password"
-                className="pixel-input"
-              />
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                className="pixel-input"
-              />
-              <button
-                type="submit"
-                className="save-button"
-              >
-                Register
-              </button>
+              <div className="input-container">
+                <label>Username</label>
+                <input
+                  type="text"
+                  className="pixel-input"
+                />
+                <label>Email</label>
+                <input
+                  type="email"
+                  className="pixel-input"
+                />
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="pixel-input"
+                />
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  className="pixel-input"
+                />
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="save-button"
+                >
+                  Register
+                </button>
+              </div>
             </div>
             <div className="login-link">
               Already have an account? <Link className="link-style" to="/login" > Login </Link></div>

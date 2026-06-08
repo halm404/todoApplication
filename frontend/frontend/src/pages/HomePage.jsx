@@ -118,32 +118,36 @@ export default function HomePage() {
         onHide={() => setShowTaskModal(false)}
         draggable={false}
       >
-        <div className="task-form">
-          <label>Title</label>
-          <input
-            type="text"
-            className="pixel-input"
-          />
-          <label>Description</label>
-          <textarea
-            rows="5"
-            className="pixel-textarea"
-          />
-          <label>Deadline</label>
-          <input
-            type="datetime-local"
-            className="pixel-input"
-          />
-          <div className="modal-actions">
-            <button className="save-button">
-              Save
-            </button>
-            <button
-              className="menu-button"
-              onClick={() => setShowTaskModal(false)}
-            >
-              Cancel
-            </button>
+        <div className="window-content">
+          <div className="task-form">
+            <div className="input-container">
+              <label>Title</label>
+              <input
+                type="text"
+                className="pixel-input"
+              />
+              <label>Description</label>
+              <textarea
+                rows="5"
+                className="pixel-textarea"
+              />
+              <label>Deadline</label>
+              <input
+                type="datetime-local"
+                className="pixel-input"
+              />
+            </div>
+            <div className="modal-actions">
+              <button className="save-button">
+                Save
+              </button>
+              <button
+                className="action-button"
+                onClick={() => setShowTaskModal(false)}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </Dialog>
@@ -153,27 +157,31 @@ export default function HomePage() {
         onHide={() => setShowListModal(false)}
         draggable={false}
       >
-        <div className="task-form">
-          <label>List Name</label>
-          <input
-            type="text"
-            className="pixel-input"
-          />
-          <label>Description (optional)</label>
-          <textarea
-            rows="4"
-            className="pixel-textarea"
-          />
-          <div className="modal-actions">
-            <button className="save-button">
-              Save
-            </button>
-            <button
-              className="menu-button"
-              onClick={() => setShowListModal(false)}
-            >
-              Cancel
-            </button>
+        <div className="window-content">
+          <div className="task-form">
+            <div className="input-container">
+              <label>List Name</label>
+              <input
+                type="text"
+                className="pixel-input"
+              />
+              <label>Description (optional)</label>
+              <textarea
+                rows="4"
+                className="pixel-textarea"
+              />
+            </div>
+            <div className="modal-actions">
+              <button className="save-button">
+                Save
+              </button>
+              <button
+                className="action-button"
+                onClick={() => setShowListModal(false)}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </Dialog>
