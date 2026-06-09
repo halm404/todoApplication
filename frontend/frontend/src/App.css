@@ -1,3 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--primary-color);
+
+    background-image:
+        repeating-linear-gradient(90deg,
+            var(--body-pattern-primary) 0px,
+            var(--body-pattern-primary) 4px,
+            var(--body-pattern-secondary) 4px,
+            var(--body-pattern-secondary) 5px);
+}
+
+
 .pixel-input,
 .pixel-textarea {
     width: 100%;
@@ -16,6 +33,7 @@
 .pixel-input:focus,
 .pixel-textarea:focus {
     background-color: var(--inputfield-focus-bg);
+    border: var(--inputfield-border-focused);
 }
 
 .pixel-textarea {

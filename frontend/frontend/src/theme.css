@@ -13,43 +13,44 @@
     --logo-header: #ffe8b2;
     --logo-header-shadow: 1px 1px 0 var(--secondary-background);
 
-    --border-primary: 4px solid var(--third-background);
+    --border-primary: 2px solid var(--third-background);
 
     --action-button-bg: rgb(230, 127, 153);
     --action-button-color: #323242;
     --action-button-hover-bg: rgb(192, 65, 97);
     --action-button-hover-color: #f8f7ff;
-    --action-button-border: 4px solid rgb(233, 119, 148);
+    --action-button-border: 2px solid rgb(233, 119, 148);
 
     --save-button-bg: rgb(178, 212, 120);
     --save-button-color: #323242;
     --save-button-hover-bg: rgb(122, 158, 77);
     --save-button-hover-color: #f8f7ff;
-    --save-button-border: 4px solid rgb(80, 117, 33);
+    --save-button-border: 2px solid rgb(80, 117, 33);
 
     --menu-button-bg: rgb(178, 212, 120);
     --menu-button-color: #323242;
     --menu-button-hover-bg: rgb(122, 158, 77);
     --menu-button-hover-color: #f8f7ff;
-    --menu-button-border: 4px solid rgb(74, 103, 36);
+    --menu-button-border: 2px solid rgb(74, 103, 36);
 
-    --inputfield-bg: #28190e00;
+    --inputfield-bg: #f3eeeb;
     --inputfield-color: #322911;
-    --inputfield-hover-bg: #bb752415;
-    --inputfield-focus-bg: #a1762095;
-    --inputfield-border: 4px solid rgb(139, 117, 69);
+    --inputfield-hover-bg: #bb75242d;
+    --inputfield-focus-bg: #a1762013;
+    --inputfield-border: 2px solid var(--third-background);
+    --inputfield-border-focused: 2px solid rgb(216, 130, 37);
 
-    --corner-pixel: polygon(4px 0,
-            calc(100% - 4px) 0, calc(100% - 4px) 4px,
-            100% 4px,
-            100% calc(100% - 4px),
-            calc(100% - 4px) calc(100% - 4px),
-            calc(100% - 4px) 100%,
-            4px 100%,
-            4px calc(100% - 4px),
-            0 calc(100% - 4px),
-            0 4px,
-            4px 4px);
+    --corner-pixel: polygon(2px 0,
+            calc(100% - 2px) 0, calc(100% - 2px) 2px,
+            100% 2px,
+            100% calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) 100%,
+            2px 100%,
+            2px calc(100% - 2px),
+            0 calc(100% - 2px),
+            0 2px,
+            2px 2px);
 }
 
 .theme-dark {
@@ -60,7 +61,7 @@
 
     --primary-background: rgb(97, 65, 45);
     --primary-color: #2c281f;
-    --border-primary: 4px solid var(--third-background);
+    --border-primary: 2px solid var(--third-background);
 
     --secondary-background: rgb(196, 167, 117);
     --secondary-color: #e4dcc4;
@@ -72,40 +73,40 @@
     --action-button-color: #323242;
     --action-button-hover-bg: rgb(140, 115, 81);
     --action-button-hover-color: #f8f7ff;
-    --action-button-border: 4px solid rgb(130, 95, 37);
+    --action-button-border: 2px solid rgb(130, 95, 37);
 
     --save-button-bg: rgb(178, 212, 120);
     --save-button-color: #323242;
     --save-button-hover-bg: rgb(122, 158, 77);
     --save-button-hover-color: #f8f7ff;
-    --save-button-border: 4px solid rgb(80, 117, 33);
+    --save-button-border: 2px solid rgb(80, 117, 33);
 
     --menu-button-bg: #633f25;
     --menu-button-color: #e3ddce;
     --menu-button-hover-bg: #9d7342;
     --menu-button-hover-color: #252422;
-    --menu-button-border: 4px solid rgb(74, 103, 36);
+    --menu-button-border: 2px solid rgb(74, 103, 36);
 
     --inputfield-bg: #28190e00;
     --inputfield-color: #e3ddce;
     --inputfield-hover-bg: #bb752428;
     --inputfield-hover-color: #d094115c;
     --inputfield-focus-bg: #674a108c;
-    --inputfield-border: 4px solid rgb(139, 117, 69);
+    --inputfield-border: 2px solid rgb(139, 117, 69);
 
-    --window-border: 4px solid rgb(53, 39, 8);
+    --window-border: 2px solid rgb(53, 39, 8);
 
-    --corner-pixel: polygon(4px 0,
-            calc(100% - 4px) 0, calc(100% - 4px) 4px,
-            100% 4px,
-            100% calc(100% - 4px),
-            calc(100% - 4px) calc(100% - 4px),
-            calc(100% - 4px) 100%,
-            4px 100%,
-            4px calc(100% - 4px),
-            0 calc(100% - 4px),
-            0 4px,
-            4px 4px);
+    --corner-pixel: polygon(2px 0,
+            calc(100% - 2px) 0, calc(100% - 2px) 2px,
+            100% 2px,
+            100% calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) 100%,
+            2px 100%,
+            2px calc(100% - 2px),
+            0 calc(100% - 2px),
+            0 2px,
+            2px 2px);
 }
 
 .theme-retro {}
