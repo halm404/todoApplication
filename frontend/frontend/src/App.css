@@ -1,0 +1,23 @@
+.pixel-input,
+.pixel-textarea {
+    width: 100%;
+    padding: 0.15rem;
+    border: var(--inputfield-border);
+    background: var(--inputfield-bg);
+    color: var(--inputfield-color);
+    clip-path: var(--corner-pixel);
+}
+
+.pixel-input:hover,
+.pixel-textarea:hover {
+    background-color: var(--inputfield-hover-bg);
+}
+
+.pixel-input:focus,
+.pixel-textarea:focus {
+    background-color: var(--inputfield-focus-bg);
+}
+
+.pixel-textarea {
+    resize: vertical;
+}

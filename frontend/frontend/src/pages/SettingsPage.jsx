@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 export default function SettingsPage() {
   return (
-    <div className="settings-page">
+    <div className="page">
       <Navbar />
       <header className="banner">
         <div className="banner-content">

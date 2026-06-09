@@ -34,7 +34,7 @@ export default function LoginPage() {
               <div>
                 <button
                   type="submit"
-                  className="action-button"
+                  className="save-button"
                 >
                   Login
                 </button>

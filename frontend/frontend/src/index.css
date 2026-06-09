@@ -1,27 +1,17 @@
 :root {
-    --yellow: #ffc759ff;
-    --pink: rgb(255, 171, 192);
-    --pink-darker: rgb(233, 119, 148);
-    --white: #f8f7ff;
-    --gray-light: #e8e9edff;
-    --gray-dark: #4f4f6b;
-    --gray: #7a7a96;
-
-    --border-yellow: 2px solid var(--yellow);
-    --corner-pixel: polygon(2px 0,
-            calc(100% - 2px) 0,
-            calc(100% - 2px) 2px,
-            100% 2px,
-            100% calc(100% - 2px),
-            calc(100% - 2px) calc(100% - 2px),
-            calc(100% - 2px) 100%,
-            2px 100%,
-            2px calc(100% - 2px),
-            0 calc(100% - 2px),
-            0 2px,
-            2px 2px);
+    --font-pixel: 'Silkscreen', monospace;
 }
 
+.banner h1,
+.window-title,
+.modal-title-bar,
+.nav-button,
+.action-button,
+.p-dialog-title {
+    font-family: var(--font-pixel);
+    font-weight: 100;
+    text-shadow: var(--logo-header);
+}
 
 .page {
     width: 1400px;
@@ -38,11 +28,10 @@
 .nav-button {
     text-decoration: none;
     padding: 10px 16px;
-    border: 2px solid var(--pink);
-    background: var(--yellow);
-    color: var(--white);
-    text-shadow: 1px 1px 0 var(--pink-darker);
-    font-weight: bold;
+    border: 2px solid var(--primary-background);
+    background: var(--third-background);
+    color: var(--primary-color);
+    text-shadow: 1px 1px 0 var(--secondary-background);
     clip-path: var(--corner-pixel);
 
     transition:
@@ -51,9 +40,9 @@
 }
 
 .nav-button:hover {
-    background: var(--pink-darker);
-    border: 2px solid var(--pink-darker);
-    color: var(--white);
+    background: var(--secondary-background);
+    border: 2px solid var(--secondary-background);
+    color: var(--primary-color);
     transform: translateY(-2px);
 }
 

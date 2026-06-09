@@ -12,28 +12,25 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
 .register-link {
     margin-top: 2rem;
     margin-bottom: 1rem;
     text-align: center;
-    color: var(--text-dim);
 }
 
 .pixel-input {
     width: 100%;
     padding: 12px;
-    border: 2px solid var(--border);
-    background: var(--white);
-    color: var(--text);
-    font-family: inherit;
+    border: var(--border-primary);
+    background: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .pixel-input:focus {
     outline: none;
-    border-color: var(--periwinkle-darker);
+    border: var(--border-primary);
 }
 
 .login-form .action-button {
@@ -43,19 +40,6 @@
 .login-window .nav-button {
     display: block;
     text-align: center;
-}
-
-.main-nav {
-    display: flex;
-    gap: 1rem;
-    margin: 1rem auto;
-    width: fit-content;
-}
-
-@media (max-width: 1450px) {
-    .login-page {
-        width: 95%;
-    }
 }
 
 @media (max-width: 700px) {

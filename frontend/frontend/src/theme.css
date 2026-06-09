@@ -1,0 +1,111 @@
+.theme-pastel {
+    --body-pattern-primary: rgb(248, 237, 237);
+    --body-pattern-secondary: #f4cd80;
+
+    --primary-background: rgb(255, 171, 192);
+    --primary-color: #f7f6ea;
+
+    --secondary-background: rgb(233, 119, 148);
+    --secondary-color: #323242;
+
+    --third-background: rgb(252, 194, 78);
+
+    --logo-header: #ffe8b2;
+    --logo-header-shadow: 1px 1px 0 var(--secondary-background);
+
+    --border-primary: 4px solid var(--third-background);
+
+    --action-button-bg: rgb(230, 127, 153);
+    --action-button-color: #323242;
+    --action-button-hover-bg: rgb(192, 65, 97);
+    --action-button-hover-color: #f8f7ff;
+    --action-button-border: 4px solid rgb(233, 119, 148);
+
+    --save-button-bg: rgb(178, 212, 120);
+    --save-button-color: #323242;
+    --save-button-hover-bg: rgb(122, 158, 77);
+    --save-button-hover-color: #f8f7ff;
+    --save-button-border: 4px solid rgb(80, 117, 33);
+
+    --menu-button-bg: rgb(178, 212, 120);
+    --menu-button-color: #323242;
+    --menu-button-hover-bg: rgb(122, 158, 77);
+    --menu-button-hover-color: #f8f7ff;
+    --menu-button-border: 4px solid rgb(74, 103, 36);
+
+    --inputfield-bg: #28190e00;
+    --inputfield-color: #322911;
+    --inputfield-hover-bg: #bb752415;
+    --inputfield-focus-bg: #a1762095;
+    --inputfield-border: 4px solid rgb(139, 117, 69);
+
+    --corner-pixel: polygon(4px 0,
+            calc(100% - 4px) 0, calc(100% - 4px) 4px,
+            100% 4px,
+            100% calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 4px),
+            calc(100% - 4px) 100%,
+            4px 100%,
+            4px calc(100% - 4px),
+            0 calc(100% - 4px),
+            0 4px,
+            4px 4px);
+}
+
+.theme-dark {
+    --body-pattern-primary: rgb(92, 68, 53);
+    --body-pattern-secondary: #7e6542;
+
+    --third-background: rgb(143, 111, 53);
+
+    --primary-background: rgb(97, 65, 45);
+    --primary-color: #2c281f;
+    --border-primary: 4px solid var(--third-background);
+
+    --secondary-background: rgb(196, 167, 117);
+    --secondary-color: #e4dcc4;
+
+    --logo-header: #dbc593;
+    --logo-header-shadow: 1px 1px 0 var(--primary-color);
+
+    --action-button-bg: #dbc593;
+    --action-button-color: #323242;
+    --action-button-hover-bg: rgb(140, 115, 81);
+    --action-button-hover-color: #f8f7ff;
+    --action-button-border: 4px solid rgb(130, 95, 37);
+
+    --save-button-bg: rgb(178, 212, 120);
+    --save-button-color: #323242;
+    --save-button-hover-bg: rgb(122, 158, 77);
+    --save-button-hover-color: #f8f7ff;
+    --save-button-border: 4px solid rgb(80, 117, 33);
+
+    --menu-button-bg: #633f25;
+    --menu-button-color: #e3ddce;
+    --menu-button-hover-bg: #9d7342;
+    --menu-button-hover-color: #252422;
+    --menu-button-border: 4px solid rgb(74, 103, 36);
+
+    --inputfield-bg: #28190e00;
+    --inputfield-color: #e3ddce;
+    --inputfield-hover-bg: #bb752428;
+    --inputfield-hover-color: #d094115c;
+    --inputfield-focus-bg: #674a108c;
+    --inputfield-border: 4px solid rgb(139, 117, 69);
+
+    --window-border: 4px solid rgb(53, 39, 8);
+
+    --corner-pixel: polygon(4px 0,
+            calc(100% - 4px) 0, calc(100% - 4px) 4px,
+            100% 4px,
+            100% calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 4px),
+            calc(100% - 4px) 100%,
+            4px 100%,
+            4px calc(100% - 4px),
+            0 calc(100% - 4px),
+            0 4px,
+            4px 4px);
+}
+
+.theme-retro {}

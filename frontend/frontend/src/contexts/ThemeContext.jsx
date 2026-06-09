@@ -1,4 +1,31 @@
-import { createContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-export const ThemeContext =
-    createContext();
+const ThemeContext = createContext();
+
+export function ThemeProvider({ children }) {
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") || "pastel"
+    );
+
+    useEffect(() => {
+        document.body.className = "";
+        document.body.classList.add(`theme-${theme}`);
+
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
+    return (
+        <ThemeContext.Provider
+            value={{
+                theme,
+                setTheme
+            }}
+        >
+            {children}
+        </ThemeContext.Provider>
+    );
+}
+
+export function useTheme() {
+    return useContext(ThemeContext);
+}
