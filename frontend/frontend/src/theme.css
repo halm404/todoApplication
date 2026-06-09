@@ -9,11 +9,13 @@
     --secondary-color: #323242;
 
     --third-background: rgb(252, 194, 78);
+    --fourth-background: rgb(207, 133, 7);
 
     --logo-header: #ffe8b2;
     --logo-header-shadow: 1px 1px 0 var(--secondary-background);
+    --subheader-shadow: 1px 2px 0px rgb(180, 83, 34);
 
-    --border-primary: 2px solid var(--third-background);
+    --border-primary: 2px solid rgb(214, 151, 15);
 
     --action-button-bg: rgb(230, 127, 153);
     --action-button-color: #323242;
@@ -40,17 +42,10 @@
     --inputfield-border: 2px solid var(--third-background);
     --inputfield-border-focused: 2px solid rgb(216, 130, 37);
 
-    --corner-pixel: polygon(2px 0,
-            calc(100% - 2px) 0, calc(100% - 2px) 2px,
-            100% 2px,
-            100% calc(100% - 2px),
-            calc(100% - 2px) calc(100% - 2px),
-            calc(100% - 2px) 100%,
-            2px 100%,
-            2px calc(100% - 2px),
-            0 calc(100% - 2px),
-            0 2px,
-            2px 2px);
+    --dropdown-background: ;
+    --dropdown-hover-background: rgb(206, 128, 149);
+    --dropdown-focus-background: rgb(146, 71, 91);
+    --dropdown-item-hover: rgb(206, 128, 149);
 }
 
 .theme-dark {
@@ -58,16 +53,18 @@
     --body-pattern-secondary: #7e6542;
 
     --third-background: rgb(143, 111, 53);
+    --fourth-background: rgb(98, 74, 33);
 
     --primary-background: rgb(97, 65, 45);
     --primary-color: #2c281f;
-    --border-primary: 2px solid var(--third-background);
+    --border-primary: 2px solid rgb(152, 124, 66);
 
     --secondary-background: rgb(196, 167, 117);
     --secondary-color: #e4dcc4;
 
     --logo-header: #dbc593;
     --logo-header-shadow: 1px 1px 0 var(--primary-color);
+    --subheader-shadow: 1px 2px 0px rgb(142, 98, 24);
 
     --action-button-bg: #dbc593;
     --action-button-color: #323242;
@@ -95,18 +92,6 @@
     --inputfield-border: 2px solid rgb(139, 117, 69);
 
     --window-border: 2px solid rgb(53, 39, 8);
-
-    --corner-pixel: polygon(2px 0,
-            calc(100% - 2px) 0, calc(100% - 2px) 2px,
-            100% 2px,
-            100% calc(100% - 2px),
-            calc(100% - 2px) calc(100% - 2px),
-            calc(100% - 2px) 100%,
-            2px 100%,
-            2px calc(100% - 2px),
-            0 calc(100% - 2px),
-            0 2px,
-            2px 2px);
 }
 
 .theme-retro {}
