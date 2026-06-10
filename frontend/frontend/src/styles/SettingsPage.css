@@ -47,7 +47,7 @@
     text-decoration: none;
     padding: .3rem .6rem;
     border: var(--warning-button-border);
-    color: var(--menu-button-color);
+    color: var(--warning-button-color);
     background: var(--warning-button-background);
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);

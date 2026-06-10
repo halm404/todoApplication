@@ -69,6 +69,7 @@
     margin-bottom: 8px;
     border: var(--save-button-border);
     background: var(--save-button-bg);
+    color: var(--save-button-color);
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
 
@@ -89,6 +90,7 @@
     margin-bottom: 8px;
     padding: .3rem .6rem;
     border: var(--menu-button-border);
+    color: var(--menu-button-color);
     background: var(--menu-button-bg);
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);

@@ -13,11 +13,11 @@ export default function SettingsPage() {
       value: "pastel"
     },
     {
-      label: "Dark",
+      label: "Moss",
       value: "dark"
     },
     {
-      label: "Retro Green",
+      label: "Retro",
       value: "retro"
     }
   ];

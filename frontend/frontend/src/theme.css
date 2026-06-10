@@ -16,8 +16,6 @@
     --third-background: rgb(252, 194, 78);
     --fourth-background: rgb(207, 133, 7);
 
-    --subheader-shadow: 1px 2px 0px rgb(180, 83, 34);
-
     --border-primary: 2px solid rgb(214, 151, 15);
 
     --window-background: #f7f6ea;
@@ -70,6 +68,11 @@
     --close-button-hover-background: rgb(201, 69, 104);
     --close-button-focus-background: rgb(146, 71, 91);
     --close-button-border: 2px solid rgb(167, 30, 62);
+
+    --warning-button-background: #9d2626;
+    --warning-button-color: white;
+    --warning-button-hover-background: #861f14;
+    --warning-button-border: 2px solid #770d06;
 }
 
 .theme-dark {
@@ -91,8 +94,6 @@
     --logo-pattern-secondary: #c19054;
     --logo-header: #dbc593;
     --logo-header-shadow: 1px 1px 0 var(--primary-color);
-
-    --subheader-shadow: 1px 2px 0px rgb(142, 98, 24);
 
     --window-background: rgb(86, 67, 44);
 
@@ -145,58 +146,83 @@
     --close-button-border: 2px solid #3f5817;
 
     --warning-button-background: #9d2626;
+    --warning-button-color: white;
     --warning-button-hover-background: #861f14;
     --warning-button-border: 2px solid #770d06;
 }
 
 .theme-retro {
-    --body-pattern-primary: rgb(92, 68, 53);
-    --body-pattern-secondary: #7e6542;
+    --body-pattern-primary: #1a1a20;
+    --body-pattern-secondary: #121239;
 
-    --third-background: rgb(143, 111, 53);
-    --fourth-background: rgb(98, 74, 33);
+    --third-background: #6E1F98;
+    --fourth-background: #efe30e;
 
-    --primary-background: rgb(97, 65, 45);
-    --primary-color: #2c281f;
-    --border-primary: 2px solid rgb(152, 124, 66);
+    --primary-background: #D5306C;
+    --secondary-background: #D5306C;
 
-    --secondary-background: rgb(196, 167, 117);
-    --secondary-color: #e4dcc4;
+    --secondary-color: #ece8d0;
+    --primary-color: #eee9dd;
 
-    --logo-pattern-primary: rgb(168, 86, 14);
-    --logo-pattern-secondary: #d0aa7b;
-    --logo-header: #dbc593;
+    --border-primary: 2px solid #de3f2a;
+
+    --logo-pattern-primary: #FFBD42;
+    --logo-pattern-secondary: #1F1F9E;
+    --logo-header: #6E1F98s;
     --logo-header-shadow: 1px 1px 0 var(--primary-color);
 
-    --subheader-shadow: 1px 2px 0px rgb(142, 98, 24);
+    --window-background: rgb(33, 30, 27);
 
-    --action-button-bg: #dbc593;
-    --action-button-color: #323242;
-    --action-button-hover-bg: rgb(140, 115, 81);
+    --dialog-background: rgb(27, 26, 24);
+
+    --link-style: rgb(129, 209, 89);
+
+    --empty-message-background: rgb(41, 38, 34);
+    --empty-message-border: 2px dashed rgb(221, 146, 17);
+
+    --nav-button-bg: #FF5D38;
+    --nav-button-color: #f7f1e6;
+    --nav-button-hover-bg: #be3516;
+    --nav-button-hover-color: #f8f7ff;
+    --nav-button-border: 2px solid #b6381b;
+
+    --action-button-bg: #D5306C;
+    --action-button-color: #e5e5f2;
+    --action-button-hover-bg: #a51147;
     --action-button-hover-color: #f8f7ff;
-    --action-button-border: 2px solid rgb(130, 95, 37);
+    --action-button-border: 2px solid rgb(87, 6, 56);
 
-    --save-button-bg: rgb(178, 212, 120);
-    --save-button-color: #323242;
-    --save-button-hover-bg: rgb(122, 158, 77);
+    --save-button-bg: rgb(134, 194, 22);
+    --save-button-color: #23211b;
+    --save-button-hover-bg: rgb(48, 76, 16);
     --save-button-hover-color: #f8f7ff;
-    --save-button-border: 2px solid rgb(80, 117, 33);
+    --save-button-border: 2px solid rgb(40, 61, 13);
 
-    --menu-button-bg: #633f25;
-    --menu-button-color: #e3ddce;
-    --menu-button-hover-bg: #9d7342;
-    --menu-button-hover-color: #252422;
-    --menu-button-border: 2px solid rgb(74, 103, 36);
+    --menu-button-bg: #FFBD42;
+    --menu-button-color: #282622;
+    --menu-button-hover-bg: #bd8721;
+    --menu-button-hover-color: #fffaf1;
+    --menu-button-border: 2px solid rgb(87, 60, 23);
 
-    --inputfield-bg: #28190e00;
+    --inputfield-bg: rgb(41, 38, 34);
     --inputfield-color: #e3ddce;
-    --inputfield-hover-bg: #bb752428;
-    --inputfield-focus-bg: #674a108c;
-    --inputfield-border: 2px solid rgb(139, 117, 69);
+    --inputfield-hover-bg: rgb(29, 26, 22);
+    --inputfield-focus-bg: rgb(22, 18, 13);
+    --inputfield-border: 2px solid #FFBD42;
 
-    --dropdown-background: rgb(218, 105, 135);
-    --dropdown-hover-background: rgb(187, 102, 124);
-    --dropdown-focus-background: rgb(146, 71, 91);
-    --dropdown-item-hover: rgb(174, 79, 104);
-    --dropdown-item-border-hover: 2px solid rgb(131, 35, 57);
+    --dropdown-background: #D5306C;
+    --dropdown-hover-background: #b3114c;
+    --dropdown-focus-background: #7b0732;
+    --dropdown-item-hover: #a51348;
+    --dropdown-item-border-hover: 2px solid #7d0833;
+
+    --close-button-background: #FF5D38;
+    --close-button-hover-background: #b42c0e;
+    --close-button-focus-background: #671c0b;
+    --close-button-border: 2px solid #7d1c06;
+
+    --warning-button-background: #9d2626;
+    --warning-button-color: white;
+    --warning-button-hover-background: #861f14;
+    --warning-button-border: 2px solid #770d06;
 }
