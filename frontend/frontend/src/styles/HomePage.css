@@ -21,9 +21,12 @@
 
 .window-title {
     padding: 1rem;
-    color: var(--primary-color);
-    background: var(--third-background);
-    text-shadow: var(--subheader-shadow);
+    background-image:
+        repeating-linear-gradient(0deg,
+            var(--third-background) 0px,
+            var(--third-background) 2px,
+            var(--body-pattern-secondary) 2px,
+            var(--body-pattern-secondary) 4px);
 }
 
 .window-content {
@@ -36,11 +39,10 @@
 
 .action-button {
     width: 100%;
-    padding: 12px;
+    padding: .3rem .6rem;
     margin-bottom: 8px;
     border: var(--action-button-border);
     background: var(--primary-background);
-    color: var(--gray-dark);
     cursor: pointer;
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
@@ -63,15 +65,13 @@
 
 .save-button {
     width: 100%;
-    padding: 12px;
+    padding: .3rem .6rem;
     margin-bottom: 8px;
     border: var(--save-button-border);
     background: var(--save-button-bg);
-    color: var(--save-button-color);
     cursor: pointer;
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
-
 
     transition:
         transform 0.1s ease,
@@ -88,13 +88,12 @@
 .menu-button {
     width: 100%;
     margin-bottom: 8px;
-    padding: 8px;
+    padding: .3rem .6rem;
     border: var(--menu-button-border);
     background: var(--menu-button-bg);
     cursor: pointer;
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
-
 
     transition:
         transform 0.1s ease,
@@ -119,7 +118,6 @@
     margin-bottom: 10px;
 }
 
-
 .modal-actions {
     display: flex;
     gap: 1rem;
@@ -138,23 +136,24 @@
 }
 
 .p-dialog-title {
-    background-color: var(--third-background);
+    background-image:
+        repeating-linear-gradient(0deg,
+            var(--third-background) 0px,
+            var(--third-background) 2px,
+            var(--body-pattern-secondary) 2px,
+            var(--body-pattern-secondary) 4px);
     padding: 25px;
-    text-shadow: 1px 1px 0 var(--secondary-background);
-    color: var(--primary-color);
 }
 
 .p-dialog-header-icon {
     border: var(--action-button-border);
     background: var(--primary-background);
-    color: var(--secondary-color);
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
     position: absolute;
     right: 10px;
     top: 15px;
-    height: 40px;
-    width: 40px;
+    padding: .6rem;
 }
 
 .p-dialog-header-icon:hover {

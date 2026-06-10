@@ -31,21 +31,21 @@
             2px 2px);
 }
 
-.banner h1,
-.window-title,
+.banner,
+.window,
 .modal-title-bar,
-.nav-button,
-.action-button,
-.p-dialog-title,
+.p-dialog,
 .register-form,
 .login-form,
 .task-form,
+.nav-button,
+.action-button,
 .menu-button,
 .save-button,
-.window-content,
-p {
+.p-dropdown-panel {
     font-family: var(--font-pixel);
     font-weight: 600;
+    color: var(--secondary-color);
 }
 
 .banner {
@@ -55,10 +55,10 @@ p {
 
     background:
         repeating-linear-gradient(90deg,
-            var(--primary-background) 0px,
-            var(--primary-background) 30px,
-            var(--third-background) 30px,
-            var(--third-background) 31px);
+            var(--logo-pattern-primary) 0px,
+            var(--logo-pattern-primary) 1px,
+            var(--logo-pattern-secondary) 1px,
+            var(--logo-pattern-secondary) 51px);
 }
 
 .banner-content {
@@ -74,9 +74,7 @@ p {
     margin: 0;
     font-size: 4rem;
     color: var(--primary-color);
-
-    text-shadow:
-        3px 3px 0 var(--secondary-background);
+    text-shadow: var(--logo-header-shadow);
 }
 
 .banner p {
@@ -100,11 +98,9 @@ p {
 
 .nav-button {
     text-decoration: none;
-    padding: 10px 16px;
+    padding: .3rem .6rem;
     border: var(--border-primary);
     background: var(--third-background);
-    color: var(--primary-color);
-    text-shadow: var(--subheader-shadow);
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
 
@@ -125,7 +121,6 @@ p {
 }
 
 @media (max-width: 700px) {
-
     .banner h1 {
         font-size: 2rem;
     }
@@ -139,19 +134,18 @@ p {
 
 .p-dropdown {
     text-decoration: none;
-    padding: 10px 16px;
     border: var(--action-button-border);
     background: var(--primary-background);
-    color: var(--primary-color);
-    text-shadow: 1px 1px 0 var(--secondary-background);
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
+    padding: .3rem .6rem;
 }
 
 .p-dropdown:hover {
     border: var(--action-button-border);
     background: var(--dropdown-hover-background);
     border: 2px solid var(--dropdown-focus-background);
+    color: var(--primary-color);
 }
 
 .p-dropdown:active {
@@ -159,8 +153,11 @@ p {
     border: 2px solid var(--dropdown-focus-background);
 }
 
+.p-dropdown-label {
+    padding: 0rem 2rem 0rem 0rem;
+}
+
 .p-dropdown-panel {
-    font-family: var(--font-pixel);
     color: var(--primary-color);
     background-color: var(--primary-background);
     text-shadow: 1px 1px 0 var(--secondary-background);
@@ -170,8 +167,21 @@ p {
 
 .p-dropdown-item {
     padding: .5rem;
+    background-color: var(--dropdown-background);
 }
 
 .p-dropdown-item:hover {
     background-color: var(--dropdown-item-hover);
+    border: var(--dropdown-item-border-hover);
+    background: var(--dropdown-item-hover);
+    text-shadow: 1px 1px 0 var(--secondary-background);
+    clip-path: var(--corner-pixel);
+    box-shadow: var(--button-shadow);
+}
+
+.theme-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
 }

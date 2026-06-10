@@ -25,7 +25,6 @@
     padding: 12px;
     border: var(--border-primary);
     background: var(--primary-color);
-    color: var(--secondary-color);
 }
 
 .pixel-input:focus {

@@ -1,18 +1,21 @@
 .theme-pastel {
     --body-pattern-primary: rgb(248, 237, 237);
-    --body-pattern-secondary: #f4cd80;
+    --body-pattern-secondary: #ebdbbb;
+
+    --logo-pattern-primary: rgb(168, 86, 14);
+    --logo-pattern-secondary: #f69eb6;
+    --logo-header: #ffe8b2;
+    --logo-header-shadow: 3px 3px 0 var(--logo-pattern-primary);
 
     --primary-background: rgb(255, 171, 192);
     --primary-color: #f7f6ea;
 
     --secondary-background: rgb(233, 119, 148);
-    --secondary-color: #323242;
+    --secondary-color: #424252;
 
     --third-background: rgb(252, 194, 78);
     --fourth-background: rgb(207, 133, 7);
 
-    --logo-header: #ffe8b2;
-    --logo-header-shadow: 1px 1px 0 var(--secondary-background);
     --subheader-shadow: 1px 2px 0px rgb(180, 83, 34);
 
     --border-primary: 2px solid rgb(214, 151, 15);
@@ -42,10 +45,11 @@
     --inputfield-border: 2px solid var(--third-background);
     --inputfield-border-focused: 2px solid rgb(216, 130, 37);
 
-    --dropdown-background: ;
-    --dropdown-hover-background: rgb(206, 128, 149);
+    --dropdown-background: rgb(218, 105, 135);
+    --dropdown-hover-background: rgb(187, 102, 124);
     --dropdown-focus-background: rgb(146, 71, 91);
-    --dropdown-item-hover: rgb(206, 128, 149);
+    --dropdown-item-hover: rgb(174, 79, 104);
+    --dropdown-item-border-hover: 2px solid rgb(131, 35, 57);
 }
 
 .theme-dark {

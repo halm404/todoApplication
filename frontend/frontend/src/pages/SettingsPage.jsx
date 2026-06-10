@@ -52,9 +52,11 @@ export default function SettingsPage() {
             <div className="window-title">
               Theme
             </div>
-            <div className="window-content">
-              <label>Theme</label>
-              <div className="input-container">
+            <div className="theme-container">
+              <label>
+                Theme
+              </label>
+              <div>
                 <Dropdown
                   value={theme}
                   options={themes}

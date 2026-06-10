@@ -14,14 +14,12 @@ body {
             var(--body-pattern-secondary) 5px);
 }
 
-
 .pixel-input,
 .pixel-textarea {
     width: 100%;
     padding: 0.15rem;
     border: var(--inputfield-border);
     background: var(--inputfield-bg);
-    color: var(--inputfield-color);
     clip-path: var(--corner-pixel);
 }
 
