@@ -19,6 +19,7 @@ body {
     width: 100%;
     padding: 0.15rem;
     border: var(--inputfield-border);
+    color: var(--inputfield-color);
     background: var(--inputfield-bg);
     clip-path: var(--corner-pixel);
 }
@@ -31,7 +32,7 @@ body {
 .pixel-input:focus,
 .pixel-textarea:focus {
     background-color: var(--inputfield-focus-bg);
-    border: var(--inputfield-border-focused);
+    border: var(--inputfield-border);
 }
 
 .pixel-textarea {

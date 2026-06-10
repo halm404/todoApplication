@@ -20,9 +20,24 @@
 
     --border-primary: 2px solid rgb(214, 151, 15);
 
-    --action-button-bg: rgb(230, 127, 153);
+    --window-background: #f7f6ea;
+
+    --dialog-background: rgb(243, 237, 225);
+
+    --link-style: rgb(223, 98, 152);
+
+    --empty-message-background: rgb(246, 240, 233);
+    --empty-message-border: 2px dashed rgb(241, 185, 111);
+
+    --nav-button-bg: rgb(241, 201, 90);
+    --nav-button-color: #614319;
+    --nav-button-hover-bg: rgb(200, 130, 17);
+    --nav-button-hover-color: #f8f7ff;
+    --nav-button-border: 2px solid rgb(161, 104, 14);
+
+    --action-button-bg: rgb(246, 166, 186);
     --action-button-color: #323242;
-    --action-button-hover-bg: rgb(192, 65, 97);
+    --action-button-hover-bg: rgb(222, 111, 139);
     --action-button-hover-color: #f8f7ff;
     --action-button-border: 2px solid rgb(233, 119, 148);
 
@@ -45,14 +60,96 @@
     --inputfield-border: 2px solid var(--third-background);
     --inputfield-border-focused: 2px solid rgb(216, 130, 37);
 
-    --dropdown-background: rgb(218, 105, 135);
+    --dropdown-background: rgb(230, 134, 160);
     --dropdown-hover-background: rgb(187, 102, 124);
     --dropdown-focus-background: rgb(146, 71, 91);
     --dropdown-item-hover: rgb(174, 79, 104);
     --dropdown-item-border-hover: 2px solid rgb(131, 35, 57);
+
+    --close-button-background: rgb(230, 134, 160);
+    --close-button-hover-background: rgb(201, 69, 104);
+    --close-button-focus-background: rgb(146, 71, 91);
+    --close-button-border: 2px solid rgb(167, 30, 62);
 }
 
 .theme-dark {
+    --body-pattern-primary: rgb(76, 92, 53);
+    --body-pattern-secondary: #7e6542;
+
+    --third-background: rgb(93, 76, 44);
+    --fourth-background: rgb(98, 74, 33);
+
+    --primary-background: rgb(97, 65, 45);
+    --secondary-background: rgb(196, 167, 117);
+
+    --secondary-color: #ece8d0;
+    --primary-color: #eee9dd;
+
+    --border-primary: 2px solid rgb(152, 124, 66);
+
+    --logo-pattern-primary: rgb(104, 65, 31);
+    --logo-pattern-secondary: #c19054;
+    --logo-header: #dbc593;
+    --logo-header-shadow: 1px 1px 0 var(--primary-color);
+
+    --subheader-shadow: 1px 2px 0px rgb(142, 98, 24);
+
+    --window-background: rgb(86, 67, 44);
+
+    --dialog-background: rgb(70, 57, 34);
+
+    --link-style: rgb(129, 209, 89);
+
+    --empty-message-background: rgb(121, 95, 63);
+    --empty-message-border: 2px dashed rgb(194, 144, 57);
+
+    --nav-button-bg: rgb(207, 144, 48);
+    --nav-button-color: #5a3c12;
+    --nav-button-hover-bg: rgb(134, 93, 32);
+    --nav-button-hover-color: #f8f7ff;
+    --nav-button-border: 2px solid rgb(101, 75, 12);
+
+    --action-button-bg: rgb(158, 160, 71);
+    --action-button-color: #323242;
+    --action-button-hover-bg: rgb(109, 113, 40);
+    --action-button-hover-color: #f8f7ff;
+    --action-button-border: 2px solid rgb(58, 76, 28);
+
+    --save-button-bg: rgb(78, 99, 39);
+    --save-button-color: #f6f3ea;
+    --save-button-hover-bg: rgb(48, 76, 16);
+    --save-button-hover-color: #f8f7ff;
+    --save-button-border: 2px solid rgb(40, 61, 13);
+
+    --menu-button-bg: #5f7738;
+    --menu-button-color: #e3ddce;
+    --menu-button-hover-bg: #426219;
+    --menu-button-hover-color: #252422;
+    --menu-button-border: 2px solid rgb(59, 87, 23);
+
+    --inputfield-bg: #28190e31;
+    --inputfield-color: #e3ddce;
+    --inputfield-hover-bg: #392d13c2;
+    --inputfield-focus-bg: #302106a2;
+    --inputfield-border: 2px solid rgb(157, 133, 82);
+
+    --dropdown-background: #5f7738;
+    --dropdown-hover-background: #435721;
+    --dropdown-focus-background: #334c0b;
+    --dropdown-item-hover: #334812;
+    --dropdown-item-border-hover: 2px solid #5f7738;
+
+    --close-button-background: #5f7738;
+    --close-button-hover-background: #435721;
+    --close-button-focus-background: #334c0b;
+    --close-button-border: 2px solid #3f5817;
+
+    --warning-button-background: #9d2626;
+    --warning-button-hover-background: #861f14;
+    --warning-button-border: 2px solid #770d06;
+}
+
+.theme-retro {
     --body-pattern-primary: rgb(92, 68, 53);
     --body-pattern-secondary: #7e6542;
 
@@ -66,8 +163,11 @@
     --secondary-background: rgb(196, 167, 117);
     --secondary-color: #e4dcc4;
 
+    --logo-pattern-primary: rgb(168, 86, 14);
+    --logo-pattern-secondary: #d0aa7b;
     --logo-header: #dbc593;
     --logo-header-shadow: 1px 1px 0 var(--primary-color);
+
     --subheader-shadow: 1px 2px 0px rgb(142, 98, 24);
 
     --action-button-bg: #dbc593;
@@ -91,11 +191,12 @@
     --inputfield-bg: #28190e00;
     --inputfield-color: #e3ddce;
     --inputfield-hover-bg: #bb752428;
-    --inputfield-hover-color: #d094115c;
     --inputfield-focus-bg: #674a108c;
     --inputfield-border: 2px solid rgb(139, 117, 69);
 
-    --window-border: 2px solid rgb(53, 39, 8);
+    --dropdown-background: rgb(218, 105, 135);
+    --dropdown-hover-background: rgb(187, 102, 124);
+    --dropdown-focus-background: rgb(146, 71, 91);
+    --dropdown-item-hover: rgb(174, 79, 104);
+    --dropdown-item-border-hover: 2px solid rgb(131, 35, 57);
 }
-
-.theme-retro {}

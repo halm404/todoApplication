@@ -109,7 +109,7 @@ export default function SettingsPage() {
                   <span>
                     Example Completed Task
                   </span>
-                  <button className="menu-button">
+                  <button className="warning-button">
                     Delete Permanently
                   </button>
                 </div>

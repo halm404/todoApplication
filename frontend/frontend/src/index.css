@@ -31,6 +31,10 @@
             2px 2px);
 }
 
+a {
+    color: var(--link-style);
+}
+
 .banner,
 .window,
 .modal-title-bar,
@@ -42,10 +46,21 @@
 .action-button,
 .menu-button,
 .save-button,
+.warning-button,
 .p-dropdown-panel {
     font-family: var(--font-pixel);
     font-weight: 600;
     color: var(--secondary-color);
+}
+
+.nav-button,
+.action-button,
+.menu-button,
+.save-button,
+.warning-button,
+.p-dropdown-panel,
+.warning-button {
+    cursor: pointer;
 }
 
 .banner {
@@ -99,8 +114,9 @@
 .nav-button {
     text-decoration: none;
     padding: .3rem .6rem;
-    border: var(--border-primary);
-    background: var(--third-background);
+    border: var(--nav-button-border);
+    color: var(--nav-button-color);
+    background: var(--nav-button-bg);
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
 
@@ -110,9 +126,8 @@
 }
 
 .nav-button:hover {
-    background: var(--fourth-background);
-    border: var(--border-primary);
-    color: var(--primary-color);
+    background: var(--nav-button-hover-bg);
+    color: var(--nav-button-hover-color);
     transform: translateY(-2px);
 }
 
@@ -135,7 +150,7 @@
 .p-dropdown {
     text-decoration: none;
     border: var(--action-button-border);
-    background: var(--primary-background);
+    background: var(--dropdown-background);
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
     padding: .3rem .6rem;
@@ -159,7 +174,7 @@
 
 .p-dropdown-panel {
     color: var(--primary-color);
-    background-color: var(--primary-background);
+    background-color: var(--dropdown-background);
     text-shadow: 1px 1px 0 var(--secondary-background);
     border: var(--action-button-border);
     clip-path: var(--corner-pixel);

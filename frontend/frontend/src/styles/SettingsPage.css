@@ -38,7 +38,32 @@
     align-items: center;
     padding: 1rem;
     border: var(--border-primary);
-    background: var(--primary-color);
+    background: var(--third-background);
+    clip-path: var(--corner-pixel);
+}
+
+.warning-button {
+    width: 20%;
+    text-decoration: none;
+    padding: .3rem .6rem;
+    border: var(--warning-button-border);
+    color: var(--menu-button-color);
+    background: var(--warning-button-background);
+    clip-path: var(--corner-pixel);
+    box-shadow: var(--button-shadow);
+
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
+.warning-button:hover {
+    background: var(--warning-button-hover-background);
+    transform: translateY(-2px);
+}
+
+.warning-button:active {
+    transform: translateY(1px);
 }
 
 @media (max-width: 1000px) {
