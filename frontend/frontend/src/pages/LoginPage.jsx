@@ -11,21 +11,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  async function handleLogout() {
-
-    await fetch(
-      "http://127.0.0.1:8000/api/logout/",
-      {
-        method: "POST",
-        credentials: "include"
-      }
-    );
-
-    localStorage.removeItem("user");
-
-    navigate("/login");
-  }
-
   async function handleLogin(e) {
     e.preventDefault();
 

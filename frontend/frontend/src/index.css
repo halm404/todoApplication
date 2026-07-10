@@ -46,6 +46,7 @@ a {
 .action-button,
 .menu-button,
 .save-button,
+.logout-button,
 .warning-button,
 .p-dropdown-panel {
     font-family: var(--font-pixel);
@@ -59,6 +60,7 @@ a {
 .save-button,
 .warning-button,
 .p-dropdown-panel,
+.logout-button,
 .warning-button {
     cursor: pointer;
 }
@@ -199,4 +201,28 @@ a {
     flex-direction: row;
     gap: 1rem;
     padding: 1rem;
+}
+
+.logout-button {
+    text-decoration: none;
+    padding: .3rem .6rem;
+    border: var(--action-button-border);
+    color: var(--action-button-color);
+    background: var(--action-button-bg);
+    clip-path: var(--corner-pixel);
+    box-shadow: var(--button-shadow);
+
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
+.logout-button:hover {
+    background: var(--action-button-hover-bg);
+    color: var(--nav-button-hover-color);
+    transform: translateY(-2px);
+}
+
+.logout-button:active {
+    transform: translateY(1px);
 }
