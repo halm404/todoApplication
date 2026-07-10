@@ -43,7 +43,6 @@
 }
 
 .warning-button {
-    width: 20%;
     text-decoration: none;
     padding: .3rem .6rem;
     border: var(--warning-button-border);
