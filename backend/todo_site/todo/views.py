@@ -2,12 +2,14 @@ from .models import Task, TodoList
 from .serializers import TaskSerializer, TodoListSerializer
 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.password_validation import validate_password
 
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -152,29 +154,49 @@ def task_detail(request, id):
 @api_view(['POST'])
 def login_user(request):
 
-    username = request.data.get('username')
-    password = request.data.get('password')
+    username = request.data.get("username", "").strip()
+    password = request.data.get("password", "")
 
+    # Required fields
+    if not username or not password:
+        return Response(
+            {"error": "Username and password are required."},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # Authenticate credentials
     user = authenticate(
+        request,
         username=username,
         password=password
     )
 
-    if user is not None:
+    if user is None:
         return Response(
-            {
-                "message": "Login successful",
-                "user_id": user.id,
-                "username": user.username
-            },
-            status=status.HTTP_200_OK
+            {"error": "Invalid username or password."},
+            status=status.HTTP_401_UNAUTHORIZED
         )
+
+    # Create session
+    login(request, user)
 
     return Response(
         {
-            "error": "Invalid username or password"
+            "message": "Login successful.",
+            "user_id": user.id,
+            "username": user.username
         },
-        status=status.HTTP_401_UNAUTHORIZED
+        status=status.HTTP_200_OK
+    )
+
+@api_view(['POST'])
+def logout_user(request):
+
+    logout(request)
+
+    return Response(
+        {"message": "Logged out successfully."},
+        status=status.HTTP_200_OK
     )
 
 # Registration of user
