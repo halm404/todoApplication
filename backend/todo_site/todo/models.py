@@ -19,6 +19,7 @@ class Task(models.Model):
     description = models.TextField(default='')
     deadline = models.DateTimeField(null=True, blank=True)
     completed = models.BooleanField(default=False)
+    completed_at = models.DateTimeField(null=True, blank=True)
 
     todo_list = models.ForeignKey(
         TodoList,

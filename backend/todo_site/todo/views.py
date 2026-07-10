@@ -3,6 +3,10 @@ from .serializers import TaskSerializer, TodoListSerializer
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from django.contrib.auth.password_validation import validate_password
+
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -177,19 +181,46 @@ def login_user(request):
 @api_view(['POST'])
 def register_user(request):
 
-    username = request.data.get('username')
-    email = request.data.get('email')
-    password = request.data.get('password')
+    username = request.data.get("username", "").strip()
+    email = request.data.get("email", "").strip().lower()
+    password = request.data.get("password", "")
 
+    # Required fields
     if not username or not email or not password:
         return Response(
-            {"error": "All fields are required"},
+            {"error": "All fields are required."},
             status=status.HTTP_400_BAD_REQUEST
         )
 
+    # Username already exists
     if User.objects.filter(username=username).exists():
         return Response(
-            {"error": "Username already exists"},
+            {"error": "Username already exists."},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # Email already exists
+    if User.objects.filter(email=email).exists():
+        return Response(
+            {"error": "Email is already registered."},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # Email format
+    try:
+        validate_email(email)
+    except ValidationError:
+        return Response(
+            {"error": "Invalid email address."},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # Validate password
+    try:
+        validate_password(password)
+    except ValidationError as e:
+        return Response(
+            {"error": e.messages},
             status=status.HTTP_400_BAD_REQUEST
         )
 
@@ -201,7 +232,7 @@ def register_user(request):
 
     return Response(
         {
-            "message": "User created successfully",
+            "message": "User created successfully.",
             "user_id": user.id,
             "username": user.username
         },

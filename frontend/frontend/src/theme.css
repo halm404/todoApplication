@@ -14,7 +14,6 @@
     --secondary-color: #424252;
 
     --third-background: rgb(252, 194, 78);
-    --fourth-background: rgb(207, 133, 7);
 
     --border-primary: 2px solid rgb(214, 151, 15);
 
@@ -36,7 +35,6 @@
     --action-button-bg: rgb(246, 166, 186);
     --action-button-color: #323242;
     --action-button-hover-bg: rgb(222, 111, 139);
-    --action-button-hover-color: #f8f7ff;
     --action-button-border: 2px solid rgb(233, 119, 148);
 
     --save-button-bg: rgb(178, 212, 120);
@@ -48,7 +46,6 @@
     --menu-button-bg: rgb(178, 212, 120);
     --menu-button-color: #323242;
     --menu-button-hover-bg: rgb(122, 158, 77);
-    --menu-button-hover-color: #f8f7ff;
     --menu-button-border: 2px solid rgb(74, 103, 36);
 
     --inputfield-bg: #f3eeeb;
@@ -56,7 +53,6 @@
     --inputfield-hover-bg: #bb75242d;
     --inputfield-focus-bg: #a1762013;
     --inputfield-border: 2px solid var(--third-background);
-    --inputfield-border-focused: 2px solid rgb(216, 130, 37);
 
     --dropdown-background: rgb(230, 134, 160);
     --dropdown-hover-background: rgb(187, 102, 124);
@@ -66,7 +62,6 @@
 
     --close-button-background: rgb(230, 134, 160);
     --close-button-hover-background: rgb(201, 69, 104);
-    --close-button-focus-background: rgb(146, 71, 91);
     --close-button-border: 2px solid rgb(167, 30, 62);
 
     --warning-button-background: #9d2626;
@@ -80,7 +75,6 @@
     --body-pattern-secondary: #7e6542;
 
     --third-background: rgb(93, 76, 44);
-    --fourth-background: rgb(98, 74, 33);
 
     --primary-background: rgb(97, 65, 45);
     --secondary-background: rgb(196, 167, 117);
@@ -113,7 +107,6 @@
     --action-button-bg: rgb(158, 160, 71);
     --action-button-color: #323242;
     --action-button-hover-bg: rgb(109, 113, 40);
-    --action-button-hover-color: #f8f7ff;
     --action-button-border: 2px solid rgb(58, 76, 28);
 
     --save-button-bg: rgb(78, 99, 39);
@@ -125,7 +118,6 @@
     --menu-button-bg: #5f7738;
     --menu-button-color: #e3ddce;
     --menu-button-hover-bg: #426219;
-    --menu-button-hover-color: #252422;
     --menu-button-border: 2px solid rgb(59, 87, 23);
 
     --inputfield-bg: #28190e31;
@@ -142,7 +134,6 @@
 
     --close-button-background: #5f7738;
     --close-button-hover-background: #435721;
-    --close-button-focus-background: #334c0b;
     --close-button-border: 2px solid #3f5817;
 
     --warning-button-background: #9d2626;
@@ -156,7 +147,6 @@
     --body-pattern-secondary: #121239;
 
     --third-background: #6E1F98;
-    --fourth-background: #efe30e;
 
     --primary-background: #D5306C;
     --secondary-background: #D5306C;
@@ -189,7 +179,6 @@
     --action-button-bg: #D5306C;
     --action-button-color: #e5e5f2;
     --action-button-hover-bg: #a51147;
-    --action-button-hover-color: #f8f7ff;
     --action-button-border: 2px solid rgb(87, 6, 56);
 
     --save-button-bg: rgb(134, 194, 22);
@@ -201,7 +190,6 @@
     --menu-button-bg: #FFBD42;
     --menu-button-color: #282622;
     --menu-button-hover-bg: #bd8721;
-    --menu-button-hover-color: #fffaf1;
     --menu-button-border: 2px solid rgb(87, 60, 23);
 
     --inputfield-bg: rgb(41, 38, 34);
@@ -218,7 +206,6 @@
 
     --close-button-background: #FF5D38;
     --close-button-hover-background: #b42c0e;
-    --close-button-focus-background: #671c0b;
     --close-button-border: 2px solid #7d1c06;
 
     --warning-button-background: #9d2626;

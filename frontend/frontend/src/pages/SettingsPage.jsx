@@ -17,7 +17,7 @@ export default function SettingsPage() {
       value: "dark"
     },
     {
-      label: "Retro",
+      label: "Mushrooms",
       value: "retro"
     }
   ];
