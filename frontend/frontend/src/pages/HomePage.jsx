@@ -9,8 +9,7 @@ export default function HomePage() {
   const [showListDialog, setShowListDialog] = useState(false);
 
   const [lists, setLists] = useState([]);
-  const [listTitle, setListTitle] = useState("");
-  const [listDescription, setListDescription] = useState("");
+  const [listName, setListName] = useState("");
 
   const [error, setError] = useState("");
 
@@ -18,12 +17,7 @@ export default function HomePage() {
 
   const [tasks, setTasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
   const [taskDeadline, setTaskDeadline] = useState("");
-
-  useEffect(() => {
-    loadLists();
-  }, []);
 
   async function loadLists() {
     try {
@@ -66,38 +60,39 @@ export default function HomePage() {
 
     setError("");
 
+    if (!listName.trim()) {
+      setError("Please enter a list name.");
+      return;
+    }
+
     try {
       const response = await fetch(
         "http://127.0.0.1:8000/api/lists/",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
           credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
-            title: listTitle,
-            description: listDescription
-          })
+            name: listName,
+          }),
         }
       );
 
       const data = await response.json();
 
-      if (!data.ok) {
-        setError("Could not create list.");
+      if (!response.ok) {
+        setError(data.error || "Could not create list.");
         return;
       }
 
-      setListTitle("");
-      setListDescription("");
+      setLists((prev) => [...prev, data]);
 
+      setListName("");
       setShowListDialog(false);
-
-      loadLists();
-
     } catch {
-      setError("Server unavailable.");
+      setError("Could not connect to the server.");
     }
   }
 
@@ -120,13 +115,10 @@ export default function HomePage() {
           credentials: "include",
           body: JSON.stringify({
             title: taskTitle,
-            description: taskDescription,
             deadline: taskDeadline
           })
         }
       );
-
-      const data = await response.json();
 
       if (!response.ok) {
         setError("Could not create task.");
@@ -134,7 +126,6 @@ export default function HomePage() {
       }
 
       setTaskTitle("");
-      setTaskDescription("");
       setTaskDeadline("");
 
       setShowTaskModal(false);
@@ -162,12 +153,6 @@ export default function HomePage() {
               Lists
             </div>
             <div className="window-content">
-              <button
-                className="action-button"
-                onClick={() => setShowListDialog(true)}
-              >
-                + New List
-              </button>
               {
                 lists.length === 0 ? (
                   <div className="empty-message">
@@ -191,6 +176,12 @@ export default function HomePage() {
                   </div>
                 )
               }
+              <button
+                className="action-button"
+                onClick={() => setShowListDialog(true)}
+              >
+                + New List
+              </button>
             </div>
           </div>
           <div className="window">
@@ -241,10 +232,6 @@ export default function HomePage() {
                       <div className="window-title">
                         {task.title}
                       </div>
-
-                      <div className="window-content">
-                        <p>{task.description}</p>
-                      </div>
                     </div>
                   ))}
                 </div>
@@ -292,13 +279,6 @@ export default function HomePage() {
                 value={taskTitle}
                 onChange={(e) => setTaskTitle(e.target.value)}
               />
-              <label>Description</label>
-              <textarea
-                rows="5"
-                className="pixel-textarea"
-                value={taskDescription}
-                onChange={(e) => setTaskDescription(e.target.value)}
-              />
               <label>Deadline</label>
               <input
                 type="datetime-local"
@@ -333,29 +313,17 @@ export default function HomePage() {
               className="task-form"
               onSubmit={handleCreateList}
             >
-              <label>Title</label>
-
+              <label>Name</label>
               <input
                 className="pixel-input"
-                value={listTitle}
-                onChange={(e) => setListTitle(e.target.value)}
+                value={listName}
+                onChange={(e) => setListName(e.target.value)}
               />
-
-              <label>Description</label>
-
-              <textarea
-                rows={4}
-                className="pixel-textarea"
-                value={listDescription}
-                onChange={(e) => setListDescription(e.target.value)}
-              />
-
               {error && (
                 <div className="error-message">
                   {error}
                 </div>
               )}
-
               <div className="modal-actions">
                 <button
                   type="submit"
@@ -363,7 +331,6 @@ export default function HomePage() {
                 >
                   {selectedList ? selectedList.title : "Current List"}
                 </button>
-
                 <button
                   type="button"
                   className="warning-button"
