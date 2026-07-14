@@ -82,15 +82,19 @@ export default function HomePage() {
         }
       );
 
+      const newList = await response.json();
+
       if (!response.ok) {
-        const data = await response.json();
-        setError(data.error || "Could not create list.");
+        setError(newList.error || "Could not create list.");
         return;
       }
 
+      setLists(prev => [...prev, newList]);
+      setSelectedList(newList);
+      setTasks([]);
+
       setListName("");
       setShowListDialog(false);
-      loadLists();
     } catch {
       setError("Could not connect to the server.");
     }
@@ -270,7 +274,7 @@ export default function HomePage() {
               />
               <label>Deadline</label>
               <input
-                type="datetime-local"
+                type="date"
                 className="pixel-input"
                 value={taskDeadline}
                 onChange={(e) => setTaskDeadline(e.target.value)}
