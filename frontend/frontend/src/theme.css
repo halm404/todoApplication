@@ -140,6 +140,19 @@
     --warning-button-color: white;
     --warning-button-hover-background: #861f14;
     --warning-button-border: 2px solid #770d06;
+
+    --list-items-background-primary: rgb(61, 42, 12);
+    --list-items-background-secondary: rgb(86, 71, 8);
+    --list-items-border: 2px solid rgb(39, 32, 2);
+
+    --checkbox-bg: rgb(154, 108, 38);
+    --checkbox-hover-bg: rgb(91, 60, 15);
+
+    --border-top: 2px solid rgb(149, 107, 23);
+    --border-left: 2px solid rgb(62, 46, 13);
+
+    --border-top-active: 2px solid rgb(116, 83, 17);
+    --border-left-active: 2px solid rgb(37, 26, 5);
 }
 
 .theme-retro {

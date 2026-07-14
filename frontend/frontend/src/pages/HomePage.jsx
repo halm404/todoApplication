@@ -1,5 +1,6 @@
 import "../styles/HomePage.css";
 import { useEffect, useState } from "react";
+import { Checkbox } from 'primereact/checkbox';
 import { Dialog } from "primereact/dialog";
 import Navbar from "../components/Navbar";
 import { authenticatedFetch } from "../api";
@@ -152,6 +153,43 @@ export default function HomePage() {
     }
   }
 
+  async function toggleTask(task) {
+    try {
+      const response = await authenticatedFetch(
+        `http://localhost:8000/api/tasks/${task.id}/`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: task.title,
+            deadline: task.deadline,
+            completed: !task.completed,
+            completed_at: !task.completed
+              ? new Date().toISOString().split("T")[0]
+              : null,
+            todo_list: task.todo_list,
+          }),
+        }
+      );
+
+      const updatedTask = await response.json();
+
+      if (!response.ok) {
+        setError("Could not update task.");
+        return;
+      }
+
+      setTasks(prev =>
+        prev.map(t => t.id === updatedTask.id ? updatedTask : t)
+      );
+
+    } catch {
+      setError("Server unavailable.");
+    }
+  }
+
   return (
     <div className="page">
       <Navbar />
@@ -246,10 +284,24 @@ export default function HomePage() {
                   {tasks.map(task => (
                     <div
                       key={task.id}
-                      className="tasks-list"
+                      className={`tasks-list ${task.completed ? "task-completed" : ""
+                        }`}
                     >
-                      <div className="window-title task-item">
-                        <div className="tasks-name">
+                      <div className=" task-item">
+                        <button
+                          type="button"
+                          className={`complete-button ${task.completed ? "completed" : ""}`}
+                          onClick={() => toggleTask(task)}
+                        >
+                          {task.completed ? <i className="pi pi-check"></i> : <i className="pi"></i>}
+                        </button>
+                        <div
+                          className="tasks-name"
+                          style={{
+                            textDecoration: task.completed ? "line-through" : "none",
+                            opacity: task.completed ? 0.6 : 1,
+                          }}
+                        >
                           {task.title}
                         </div>
                         <div className="tasks-deadline">
@@ -286,7 +338,7 @@ export default function HomePage() {
             </div>
           </div>
         </aside>
-      </div>
+      </div >
       <Dialog
         header="Add Task"
         visible={showTaskModal}
@@ -367,6 +419,6 @@ export default function HomePage() {
           </div>
         </div>
       </Dialog>
-    </div>
+    </div >
   );
 }
