@@ -2,6 +2,7 @@ import "../styles/HomePage.css";
 import { useEffect, useState } from "react";
 import { Dialog } from "primereact/dialog";
 import Navbar from "../components/Navbar";
+import { authenticatedFetch } from "../api";
 
 export default function HomePage() {
   const [showTaskModal, setShowTaskModal] = useState(false);
@@ -19,19 +20,24 @@ export default function HomePage() {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDeadline, setTaskDeadline] = useState("");
 
+  useEffect(() => {
+    loadLists();
+  }, []);
+
   async function loadLists() {
     try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/api/lists/",
-        {
-          credentials: "include"
-        }
+      const response = await authenticatedFetch(
+        "http://localhost:8000/api/lists/"
       );
 
       const data = await response.json();
 
-      setLists(data);
-
+      if (Array.isArray(data)) {
+        setLists(data);
+      } else {
+        console.error("Unexpected response:", data);
+        setLists([]);
+      }
     } catch {
       console.error("Could not load lists.");
     }
@@ -39,11 +45,8 @@ export default function HomePage() {
 
   async function loadTasks(listId) {
     try {
-      const response = await fetch(
-        `http://127.0.0.1:8000/api/lists/${listId}/tasks/`,
-        {
-          credentials: "include"
-        }
+      const response = await authenticatedFetch(
+        `http://localhost:8000/api/lists/${listId}/tasks/`
       );
 
       const data = await response.json();
@@ -66,11 +69,10 @@ export default function HomePage() {
     }
 
     try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/api/lists/",
+      const response = await authenticatedFetch(
+        "http://localhost:8000/api/lists/",
         {
           method: "POST",
-          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
@@ -80,17 +82,15 @@ export default function HomePage() {
         }
       );
 
-      const data = await response.json();
-
       if (!response.ok) {
+        const data = await response.json();
         setError(data.error || "Could not create list.");
         return;
       }
 
-      setLists((prev) => [...prev, data]);
-
       setListName("");
       setShowListDialog(false);
+      loadLists();
     } catch {
       setError("Could not connect to the server.");
     }
@@ -105,25 +105,14 @@ export default function HomePage() {
     }
 
     try {
-      const response = await fetch(
-        `http://127.0.0.1:8000/api/lists/${selectedList.id}/tasks/`,
+      await fetch(
+        `http://localhost:8000/api/lists/${selectedList.id}/tasks/`,
         {
-          method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            Authorization: `Bearer ${localStorage.getItem("access")}`,
           },
-          credentials: "include",
-          body: JSON.stringify({
-            title: taskTitle,
-            deadline: taskDeadline
-          })
         }
       );
-
-      if (!response.ok) {
-        setError("Could not create task.");
-        return;
-      }
 
       setTaskTitle("");
       setTaskDeadline("");
@@ -267,7 +256,7 @@ export default function HomePage() {
         header="Add Task"
         visible={showTaskModal}
         onHide={() => setShowTaskModal(false)}
-        draggable={false}
+        draggable={true}
       >
         <div className="window-content">
           <form className="task-form" onSubmit={handleCreateTask}>
@@ -305,7 +294,7 @@ export default function HomePage() {
         header="New List"
         visible={showListDialog}
         onHide={() => setShowListDialog(false)}
-        draggable={false}
+        draggable={true}
       >
         <div className="window-content">
           <div className="task-form">
@@ -329,7 +318,7 @@ export default function HomePage() {
                   type="submit"
                   className="save-button"
                 >
-                  {selectedList ? selectedList.title : "Current List"}
+                  Create list
                 </button>
                 <button
                   type="button"

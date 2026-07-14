@@ -23,17 +23,16 @@ export default function LoginPage() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/login/",
+        "http://localhost:8000/api/login/",
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          credentials: "include",
           body: JSON.stringify({
             username,
-            password
-          })
+            password,
+          }),
         }
       );
 
@@ -44,11 +43,14 @@ export default function LoginPage() {
         return;
       }
 
+      localStorage.setItem("access", data.access);
+      localStorage.setItem("refresh", data.refresh);
+
       localStorage.setItem(
         "user",
         JSON.stringify({
           id: data.user_id,
-          username: data.username
+          username: data.username,
         })
       );
 

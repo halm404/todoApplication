@@ -4,20 +4,11 @@ export default function Navbar() {
     const navigate = useNavigate();
     const loggedIn = localStorage.getItem("user");
 
-    async function handleLogout() {
-        try {
-            await fetch(
-                "http://127.0.0.1:8000/api/logout/",
-                {
-                    method: "POST",
-                    credentials: "include",
-                }
-            );
-        } catch {
-            // Ignore server errors during logout
-        }
-
+    function handleLogout() {
+        localStorage.removeItem("access");
+        localStorage.removeItem("refresh");
         localStorage.removeItem("user");
+
         navigate("/login");
     }
 
