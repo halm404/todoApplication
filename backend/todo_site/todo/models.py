@@ -16,7 +16,6 @@ class TodoList(models.Model):
 
 class Task(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField(default='')
     deadline = models.DateTimeField(null=True, blank=True)
     completed = models.BooleanField(default=False)
     completed_at = models.DateTimeField(null=True, blank=True)

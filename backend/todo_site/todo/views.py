@@ -2,33 +2,35 @@ from .models import Task, TodoList
 from .serializers import TaskSerializer, TodoListSerializer
 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
 
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 
+from rest_framework_simplejwt.tokens import RefreshToken
 
 # GET all lists or create list
-@api_view(['GET', 'POST'])
+@api_view(["GET", "POST"])
+@permission_classes([IsAuthenticated])
 def lists(request):
-
-    if request.method == 'GET':
-        lists = TodoList.objects.all()
+    if request.method == "GET":
+        lists = TodoList.objects.filter(owner=request.user)
         serializer = TodoListSerializer(lists, many=True)
         return Response(serializer.data)
 
-    elif request.method == 'POST':
+    elif request.method == "POST":
+
         serializer = TodoListSerializer(data=request.data)
 
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(owner=request.user)
+
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
@@ -42,7 +44,6 @@ def lists(request):
 # GET list by id, update list by id, or delete list by id
 @api_view(['GET', 'PUT', 'DELETE'])
 def list_detail(request, id):
-
     try:
         todo_list = TodoList.objects.get(id=id)
     except TodoList.DoesNotExist:
@@ -60,11 +61,9 @@ def list_detail(request, id):
             todo_list,
             data=request.data
         )
-
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-
         return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
@@ -72,7 +71,6 @@ def list_detail(request, id):
 
     elif request.method == 'DELETE':
         todo_list.delete()
-
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
@@ -80,7 +78,6 @@ def list_detail(request, id):
 # GET tasks from a list or create new task
 @api_view(['GET', 'POST'])
 def list_tasks(request, list_id):
-
     try:
         todo_list = TodoList.objects.get(id=list_id)
     except TodoList.DoesNotExist:
@@ -95,20 +92,15 @@ def list_tasks(request, list_id):
         return Response(serializer.data)
 
     elif request.method == 'POST':
-
         data = request.data.copy()
         data['todo_list'] = todo_list.id
-
         serializer = TaskSerializer(data=data)
-
         if serializer.is_valid():
             serializer.save()
-
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
             )
-
         return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
@@ -117,7 +109,6 @@ def list_tasks(request, list_id):
 # GET task by id, update task by id, or delete task by id
 @api_view(['GET', 'PUT', 'DELETE'])
 def task_detail(request, id):
-
     try:
         task = Task.objects.get(id=id)
     except Task.DoesNotExist:
@@ -125,110 +116,69 @@ def task_detail(request, id):
             {"error": "Task not found"},
             status=status.HTTP_404_NOT_FOUND
         )
-
     if request.method == 'GET':
         serializer = TaskSerializer(task)
         return Response(serializer.data)
-
     elif request.method == 'PUT':
         serializer = TaskSerializer(
             task,
             data=request.data
         )
-
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-
         return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
-
     elif request.method == 'DELETE':
         task.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-# Authorization of user
-@api_view(['POST'])
+@api_view(["POST"])
+@permission_classes([AllowAny])
 def login_user(request):
-
-    username = request.data.get("username", "").strip()
-    password = request.data.get("password", "")
-
-    # Required fields
-    if not username or not password:
-        return Response(
-            {"error": "Username and password are required."},
-            status=status.HTTP_400_BAD_REQUEST
-        )
-
-    # Authenticate credentials
+    username = request.data.get("username")
+    password = request.data.get("password")
     user = authenticate(
-        request,
         username=username,
         password=password
     )
-
     if user is None:
         return Response(
-            {"error": "Invalid username or password."},
-            status=status.HTTP_401_UNAUTHORIZED
+            {"error": "Invalid username or password"},
+            status=401
         )
-
-    # Create session
-    login(request, user)
-
-    return Response(
-        {
-            "message": "Login successful.",
-            "user_id": user.id,
-            "username": user.username
-        },
-        status=status.HTTP_200_OK
-    )
-
-@api_view(['POST'])
-def logout_user(request):
-
-    logout(request)
-
-    return Response(
-        {"message": "Logged out successfully."},
-        status=status.HTTP_200_OK
-    )
+    refresh = RefreshToken.for_user(user)
+    return Response({
+        "refresh": str(refresh),
+        "access": str(refresh.access_token),
+        "user_id": user.id,
+        "username": user.username
+    })
 
 # Registration of user
 @api_view(['POST'])
 def register_user(request):
-
     username = request.data.get("username", "").strip()
     email = request.data.get("email", "").strip().lower()
     password = request.data.get("password", "")
-
-    # Required fields
     if not username or not email or not password:
         return Response(
             {"error": "All fields are required."},
             status=status.HTTP_400_BAD_REQUEST
         )
-
-    # Username already exists
     if User.objects.filter(username=username).exists():
         return Response(
             {"error": "Username already exists."},
             status=status.HTTP_400_BAD_REQUEST
         )
-
-    # Email already exists
     if User.objects.filter(email=email).exists():
         return Response(
             {"error": "Email is already registered."},
             status=status.HTTP_400_BAD_REQUEST
         )
-
-    # Email format
     try:
         validate_email(email)
     except ValidationError:
@@ -236,8 +186,6 @@ def register_user(request):
             {"error": "Invalid email address."},
             status=status.HTTP_400_BAD_REQUEST
         )
-
-    # Validate password
     try:
         validate_password(password)
     except ValidationError as e:
@@ -245,13 +193,11 @@ def register_user(request):
             {"error": e.messages},
             status=status.HTTP_400_BAD_REQUEST
         )
-
     user = User.objects.create_user(
         username=username,
         email=email,
         password=password
     )
-
     return Response(
         {
             "message": "User created successfully.",

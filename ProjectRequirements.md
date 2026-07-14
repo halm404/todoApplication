@@ -10,7 +10,6 @@
 
 - Title: string
 - ID: unique
-- Description: string
 - Deadline: dd.mm.yyyy hh:mm
 - Status: complete / active
 
