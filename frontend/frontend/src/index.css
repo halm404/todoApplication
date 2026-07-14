@@ -225,3 +225,18 @@ a {
 .logout-button:active {
     transform: translateY(1px);
 }
+
+.tasks-list {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+}
+
+.tasks-item {
+    width: 70%;
+}
+
+.tasks-item-deadline {
+    text-align: right;
+}

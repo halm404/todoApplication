@@ -103,28 +103,46 @@ export default function HomePage() {
   async function handleCreateTask(e) {
     e.preventDefault();
 
+    setError("");
+
     if (!selectedList) {
       setError("Please select a list first.");
       return;
     }
 
+    if (!taskTitle.trim()) {
+      setError("Please enter a task title.");
+      return;
+    }
+
     try {
-      await fetch(
+      const response = await authenticatedFetch(
         `http://localhost:8000/api/lists/${selectedList.id}/tasks/`,
         {
+          method: "POST",
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("access")}`,
+            "Content-Type": "application/json",
           },
+          body: JSON.stringify({
+            title: taskTitle,
+            deadline: taskDeadline || null,
+            description: "",
+            completed: false,
+          }),
         }
       );
 
+      const newTask = await response.json();
+
+      if (!response.ok) {
+        setError(newTask.error || "Could not create task.");
+        return;
+      }
+
+      setTasks(prev => [...prev, newTask]);
       setTaskTitle("");
       setTaskDeadline("");
-
       setShowTaskModal(false);
-
-      loadTasks(selectedList.id);
-
     } catch {
       setError("Server unavailable.");
     }
@@ -222,8 +240,13 @@ export default function HomePage() {
                       key={task.id}
                       className="window"
                     >
-                      <div className="window-title">
-                        {task.title}
+                      <div className="window-title tasks-list">
+                        <div className="tasks-item">
+                          {task.title}
+                        </div>
+                        <div className="tasks-item-deadline">
+                          {task.deadline}
+                        </div>
                       </div>
                     </div>
                   ))}
