@@ -43,6 +43,10 @@ export default function HomePage() {
     }
   }
 
+  function getToday() {
+    return new Date().toISOString().split("T")[0];
+  }
+
   async function loadTasks(listId) {
     try {
       const response = await authenticatedFetch(
@@ -125,7 +129,7 @@ export default function HomePage() {
           },
           body: JSON.stringify({
             title: taskTitle,
-            deadline: taskDeadline || null,
+            deadline: taskDeadline || getToday(),
             description: "",
             completed: false,
           }),
@@ -221,7 +225,11 @@ export default function HomePage() {
               <button
                 className="action-button"
                 disabled={!selectedList}
-                onClick={() => setShowTaskModal(true)}
+                onClick={() => {
+                  setTaskDeadline(getToday());
+                  setTaskTitle("");
+                  setShowTaskModal(true);
+                }}
               >
                 + New Task
               </button>
@@ -234,17 +242,17 @@ export default function HomePage() {
                   This list has no tasks.
                 </div>
               ) : (
-                <div className="task-list">
+                <div>
                   {tasks.map(task => (
                     <div
                       key={task.id}
-                      className="window"
+                      className="tasks-list"
                     >
-                      <div className="window-title tasks-list">
-                        <div className="tasks-item">
+                      <div className="window-title task-item">
+                        <div className="tasks-name">
                           {task.title}
                         </div>
-                        <div className="tasks-item-deadline">
+                        <div className="tasks-deadline">
                           {task.deadline}
                         </div>
                       </div>

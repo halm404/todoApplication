@@ -226,17 +226,25 @@ a {
     transform: translateY(1px);
 }
 
-.tasks-list {
+.task-item {
+
+
     display: flex;
     flex-direction: row;
-    gap: 1rem;
     width: 100%;
 }
 
-.tasks-item {
-    width: 70%;
+.tasks-list {
+    border: var(--border-primary);
+    background: var(--window-background);
+    clip-path: var(--corner-pixel);
+    margin: 1rem 0rem;
 }
 
-.tasks-item-deadline {
+.tasks-name {
+    width: 100%;
+}
+
+.tasks-deadline {
     text-align: right;
 }
