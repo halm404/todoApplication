@@ -48,6 +48,11 @@
     --menu-button-hover-bg: rgb(122, 158, 77);
     --menu-button-border: 2px solid rgb(74, 103, 36);
 
+    --cancel-button-bg: #f2f2f2;
+    --cancel-button-color: #000000;
+    --cancel-button-hover-bg: #c8c8c8;
+    --cancel-button-border: 2px solid rgb(55, 55, 55);
+
     --inputfield-bg: #f3eeeb;
     --inputfield-color: #322911;
     --inputfield-hover-bg: #bb75242d;
@@ -74,6 +79,10 @@
     --list-items-border: 2px solid rgb(135, 92, 5);
     --lists-task-color: rgb(62, 52, 37);
 
+    --lists-input-background-focus: #bdd68b;
+    --lists-input-border-top: 2px solid #899f26;
+    --lists-input-border-left: 2px solid #30450e;
+
     --checkbox-bg: rgb(225, 168, 83);
     --checkbox-hover-bg: rgb(161, 105, 21);
 
@@ -96,7 +105,7 @@
     --secondary-color: #ece8d0;
     --primary-color: #eee9dd;
 
-    --border-primary: 2px solid rgb(152, 124, 66);
+    --border-primary: 2px solid rgb(177, 147, 87);
 
     --logo-pattern-primary: rgb(104, 65, 31);
     --logo-pattern-secondary: #c19054;
@@ -116,48 +125,57 @@
     --nav-button-color: #5a3c12;
     --nav-button-hover-bg: rgb(134, 93, 32);
     --nav-button-hover-color: #f8f7ff;
-    --nav-button-border: 2px solid rgb(101, 75, 12);
+    --nav-button-border: 2px solid rgb(232, 192, 100);
 
     --action-button-bg: rgb(158, 160, 71);
     --action-button-color: #323242;
     --action-button-hover-bg: rgb(109, 113, 40);
-    --action-button-border: 2px solid rgb(58, 76, 28);
+    --action-button-border: 2px solid rgb(197, 203, 137);
 
     --save-button-bg: rgb(78, 99, 39);
     --save-button-color: #f6f3ea;
     --save-button-hover-bg: rgb(48, 76, 16);
     --save-button-hover-color: #f8f7ff;
-    --save-button-border: 2px solid rgb(40, 61, 13);
+    --save-button-border: 2px solid rgb(115, 133, 91);
 
     --menu-button-bg: #5f7738;
     --menu-button-color: #e3ddce;
     --menu-button-hover-bg: #426219;
-    --menu-button-border: 2px solid rgb(59, 87, 23);
+    --menu-button-border: 2px solid rgb(116, 142, 82);
 
-    --inputfield-bg: #28190e31;
+    --cancel-button-bg: #d1d7c2;
+    --cancel-button-color: #000000;
+    --cancel-button-hover-bg: #899379;
+    --cancel-button-border: 2px solid rgb(229, 240, 211);
+
+    --inputfield-bg: #29170a5f;
     --inputfield-color: #e3ddce;
-    --inputfield-hover-bg: #392d13c2;
-    --inputfield-focus-bg: #302106a2;
-    --inputfield-border: 2px solid rgb(157, 133, 82);
+    --inputfield-hover-bg: #956f1ec2;
+    --inputfield-focus-bg: #68490fa2;
+    --inputfield-border: 2px solid rgb(150, 128, 81);
 
     --dropdown-background: #5f7738;
     --dropdown-hover-background: #435721;
     --dropdown-focus-background: #334c0b;
     --dropdown-item-hover: #334812;
-    --dropdown-item-border-hover: 2px solid #5f7738;
+    --dropdown-item-border-hover: 2px solid #d6dccc;
 
     --close-button-background: #5f7738;
     --close-button-hover-background: #435721;
-    --close-button-border: 2px solid #3f5817;
+    --close-button-border: 2px solid #a3b97f;
 
     --warning-button-background: #9d2626;
     --warning-button-color: white;
     --warning-button-hover-background: #861f14;
-    --warning-button-border: 2px solid #770d06;
+    --warning-button-border: 2px solid #bb625c;
 
     --list-items-background-primary: rgb(61, 42, 12);
     --list-items-background-secondary: rgb(86, 71, 8);
-    --list-items-border: 2px solid rgb(39, 32, 2);
+    --list-items-border: 2px solid rgb(34, 28, 4);
+
+    --lists-input-background-focus: #37451c;
+    --lists-input-border-top: 2px solid #748627;
+    --lists-input-border-left: 2px solid #24310f;
 
     --checkbox-bg: rgb(154, 108, 38);
     --checkbox-hover-bg: rgb(91, 60, 15);
@@ -201,49 +219,58 @@
     --nav-button-color: #f7f1e6;
     --nav-button-hover-bg: #be3516;
     --nav-button-hover-color: #f8f7ff;
-    --nav-button-color: 2px solid #83220d;
+    --nav-button-border: 2px solid #efe9e7;
 
     --action-button-bg: #D5306C;
     --action-button-color: #e5e5f2;
     --action-button-hover-bg: #a51147;
-    --action-button-border: 2px solid rgb(87, 6, 56);
+    --action-button-border: 2px solid rgb(237, 231, 235);
 
     --save-button-bg: rgb(134, 194, 22);
     --save-button-color: #23211b;
     --save-button-hover-bg: rgb(48, 76, 16);
     --save-button-hover-color: #f8f7ff;
-    --save-button-border: 2px solid rgb(45, 75, 7);
+    --save-button-border: 2px solid rgb(241, 255, 214);
 
     --menu-button-bg: #FFBD42;
     --menu-button-color: #282622;
     --menu-button-hover-bg: #bd8721;
-    --menu-button-border: 2px solid rgb(163, 108, 30);
+    --menu-button-border: 2px solid rgb(236, 232, 227);
+
+    --cancel-button-bg: #fafafa;
+    --cancel-button-color: #161616;
+    --cancel-button-hover-bg: #c9c9c9;
+    --cancel-button-border: 2px solid rgb(220, 220, 220);
 
     --inputfield-bg: rgb(41, 38, 34);
-    --inputfield-color: #e3ddce;
-    --inputfield-hover-bg: rgb(29, 26, 22);
-    --inputfield-focus-bg: rgb(22, 18, 13);
+    --inputfield-color: #f1ede6;
+    --inputfield-hover-bg: rgb(179, 140, 43);
+    --inputfield-focus-bg: rgb(122, 97, 26);
     --inputfield-border: 2px solid #FFBD42;
 
     --dropdown-background: #D5306C;
     --dropdown-hover-background: #b3114c;
     --dropdown-focus-background: #7b0732;
     --dropdown-item-hover: #a51348;
-    --dropdown-item-border-hover: 2px solid #7d0833;
+    --dropdown-item-border-hover: 2px solid #f1e3e8;
 
     --close-button-background: #FF5D38;
     --close-button-hover-background: #b42c0e;
-    --close-button-border: 2px solid #7d1c06;
+    --close-button-border: 2px solid #ede4e2;
 
     --warning-button-background: #9d2626;
     --warning-button-color: white;
     --warning-button-hover-background: #55150e;
-    --warning-button-border: 2px solid #4b0904;
+    --warning-button-border: 2px solid #f9f1f0;
 
     --list-items-background-primary: rgb(20, 19, 49);
     --list-items-background-secondary: rgb(70, 7, 93);
     --list-items-border: 2px solid rgb(130, 5, 86);
     --lists-task-color: rgb(239, 239, 239);
+
+    --lists-input-background-focus: #ac6f19;
+    --lists-input-border-top: 2px solid #745408;
+    --lists-input-border-left: 2px solid #623d11;
 
     --checkbox-bg: rgb(234, 213, 49);
     --checkbox-hover-bg: rgb(163, 116, 45);

@@ -64,7 +64,6 @@
 }
 
 .save-button {
-    width: 100%;
     padding: .3rem .6rem;
     border: var(--save-button-border);
     background: var(--save-button-bg);
@@ -104,6 +103,25 @@
     transform: translateY(-2px);
 }
 
+.cancel-button {
+    padding: .2rem .2rem;
+    border: var(--cancel-button-border);
+    color: var(--cancel-button-color);
+    background: var(--cancel-button-bg);
+    clip-path: var(--corner-pixel);
+    box-shadow: var(--button-shadow);
+
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
+.cancel-button:hover {
+    background: var(--cancel-button-hover-bg);
+    color: var(--cancel-button-color);
+    transform: translateY(-2px);
+}
+
 .lists-items .pixel-input {
     width: 9.5rem;
 }
@@ -122,8 +140,9 @@
 
 .modal-actions {
     display: flex;
-    gap: 1rem;
+    gap: .5rem;
     margin-top: 1rem;
+    align-self: flex-end;
 }
 
 .p-dialog-mask {
@@ -204,7 +223,7 @@
     background: var(--checkbox-bg);
     box-shadow:
         inset 0 2px 0 rgba(0, 0, 0, 0.49),
-        inset 0 -3px 0 rgba(255, 182, 182, 0.59),
+        inset 0 -3px 0 rgba(215, 149, 61, 0.371),
         -2px 0 0 rgba(0, 0, 0, 0.69),
         2px 0 0 rgba(0, 0, 0, 0.307);
     height: 1.5rem;
@@ -352,22 +371,51 @@
     width: 100%;
 }
 
-@media (max-width: 1450px) {
-    .homepage {
-        width: 95%;
-    }
+.list-container .lists-items .pixel-input,
+.list-container .lists-items .pixel-textarea {
+    width: 100%;
+    padding: 0.15rem;
+    border-top: var(--lists-input-border-top);
+    border-right: var(--lists-input-border-top);
+    border-bottom: var(--lists-input-border-top);
+    border-left: var(--lists-input-border-left);
+
+    background: var(--lists-input-background-focus);
+    box-shadow:
+        inset 0 2px 0 rgba(0, 0, 0, 0.49),
+        inset 0 -3px 0 rgba(239, 239, 239, 0.603),
+        -2px 0 0 rgba(0, 0, 0, 0.69),
+        2px 0 0 rgba(0, 0, 0, 0.307);
+    color: var(--inputfield-color);
+    clip-path: none;
 }
 
-@media (max-width: 1000px) {
-    .main-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .banner h1 {
-        font-size: 2rem;
-    }
-
-    .large-window {
-        min-height: 500px;
-    }
+.pixel-input:hover,
+.pixel-textarea:hover {
+    background-color: var(--inputfield-hover-bg);
 }
+
+.pixel-input:focus,
+.pixel-textarea:focus {
+    background-color: var(--inputfield-focus-bg);
+    border: var(--inputfield-border);
+
+    @media (max-width: 1450px) {
+        .homepage {
+            width: 95%;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .main-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .banner h1 {
+            font-size: 2rem;
+        }
+
+        .large-window {
+            min-height: 500px;
+        }
+    }

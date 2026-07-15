@@ -27,6 +27,9 @@ export default function HomePage() {
   const [editingListId, setEditingListId] = useState(null);
   const [editingListName, setEditingListName] = useState("");
 
+  const [showDeleteListDialog, setShowDeleteListDialog] = useState(false);
+  const [listToDelete, setListToDelete] = useState(null);
+
   const [taskFilter, setTaskFilter] = useState("all");
 
   const filterOptions = [
@@ -46,6 +49,11 @@ export default function HomePage() {
     }
   });
 
+  function confirmDeleteList(list) {
+    setListToDelete(list);
+    setShowDeleteListDialog(true);
+  }
+
   function handleEditTask(task) {
     setEditingTask(task);
     setTaskTitle(task.title);
@@ -56,6 +64,39 @@ export default function HomePage() {
   useEffect(() => {
     loadLists();
   }, []);
+
+  async function confirmDeleteListAction() {
+    if (!listToDelete) return;
+
+    try {
+      const response = await authenticatedFetch(
+        `http://localhost:8000/api/lists/${listToDelete.id}/`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        setError("Could not delete list.");
+        return;
+      }
+
+      setLists(prev =>
+        prev.filter(list => list.id !== listToDelete.id)
+      );
+
+      if (selectedList?.id === listToDelete.id) {
+        setSelectedList(null);
+        setTasks([]);
+      }
+
+      setListToDelete(null);
+      setShowDeleteListDialog(false);
+
+    } catch {
+      setError("Server unavailable.");
+    }
+  }
 
   async function loadLists() {
     try {
@@ -405,7 +446,7 @@ export default function HomePage() {
 
                       <button
                         className="delete-button"
-                        onClick={() => deleteList(list.id)}
+                        onClick={() => confirmDeleteList(list)}
                       >
                         <i className="pi pi-trash"></i>
                       </button>
@@ -454,7 +495,7 @@ export default function HomePage() {
               </button>
               {!selectedList ? (
                 <div className="empty-message">
-                  Select a list to view tasks.
+                  Select a list to view or add tasks.
                 </div>
               ) : tasks.length === 0 ? (
                 <div className="empty-message">
@@ -566,12 +607,9 @@ export default function HomePage() {
               />
             </div>
             <div className="modal-actions">
-              <button type="submit" className="save-button">
-                {editingTask ? "Save Changes" : "Create Task"}
-              </button>
               <button
                 type="button"
-                className="warning-button"
+                className="cancel-button"
                 onClick={() => {
                   setEditingTask(null);
                   setTaskTitle("");
@@ -580,6 +618,9 @@ export default function HomePage() {
                 }}
               >
                 Cancel
+              </button>
+              <button type="submit" className="save-button">
+                {editingTask ? "Save Changes" : "Create Task"}
               </button>
             </div>
           </form>
@@ -610,20 +651,54 @@ export default function HomePage() {
               )}
               <div className="modal-actions">
                 <button
+                  type="button"
+                  className="cancel-button"
+                  onClick={() => setShowListDialog(false)}
+                >
+                  Cancel
+                </button>
+                <button
                   type="submit"
                   className="save-button"
                 >
                   {editingList ? "Save Changes" : "Create List"}
                 </button>
-                <button
-                  type="button"
-                  className="warning-button"
-                  onClick={() => setShowListDialog(false)}
-                >
-                  Cancel
-                </button>
               </div>
             </form>
+          </div>
+        </div>
+      </Dialog>
+      <Dialog
+        header="Delete List"
+        visible={showDeleteListDialog}
+        onHide={() => {
+          setShowDeleteListDialog(false);
+          setListToDelete(null);
+        }}
+        draggable={false}
+        style={{ width: "25rem" }}
+      >
+        <div className="window-content task-form">
+          Are you sure you want to delete "{listToDelete?.name}"?
+
+          This will also permanently delete all tasks in this list.
+
+          <div className="modal-actions">
+            <button
+              className="cancel-button"
+              onClick={() => {
+                setShowDeleteListDialog(false);
+                setListToDelete(null);
+              }}
+            >
+              Cancel
+            </button>
+            <button
+              className="warning-button"
+              onClick={confirmDeleteListAction}
+            >
+              Confirm Delete
+            </button>
           </div>
         </div>
       </Dialog>
