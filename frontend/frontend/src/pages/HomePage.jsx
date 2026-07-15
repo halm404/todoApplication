@@ -339,81 +339,72 @@ export default function HomePage() {
               Lists
             </div>
             <div className="window-content">
-              {
-                lists.length === 0 ? (
-                  <div className="empty-message">
-                    No lists found
-                  </div>
-                ) : (
-                  <div className="list-container">
-                    {lists.map((list) => (
-                      <div
-                        key={list.id}
-                        className="lists-items"
+              {lists.length === 0 ? (
+                <div className="empty-message">
+                  No lists found
+                </div>
+              ) : (
+                <div className="list-container">
+                  {lists.map((list) => (
+                    <div
+                      key={list.id}
+                      className="lists-items"
+                    >
+                      {editingListId === list.id ? (
+                        <input
+                          autoFocus
+                          className="pixel-input edit-field"
+                          value={editingListName}
+                          onChange={(e) => setEditingListName(e.target.value)}
+                          onBlur={saveListName}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") saveListName();
+                            if (e.key === "Escape") {
+                              setEditingListId(null);
+                              setEditingListName("");
+                            }
+                          }}
+                        />
+                      ) : (
+                        <button
+                          className="menu-button"
+                          onClick={() => {
+                            setSelectedList(list);
+                            loadTasks(list.id);
+                          }}
+                        >
+                          {list.name}
+                        </button>
+                      )}
+
+                      <button
+                        className="edit-button"
+                        onClick={() => startEditingList(list)}
                       >
-                        {editingListId === list.id ? (
-                          <>
-                            <input
-                              autoFocus
-                              className="pixel-input edit-field"
-                              value={editingListName}
-                              onChange={(e) => setEditingListName(e.target.value)}
-                              onBlur={saveListName}
-                              onKeyDown={(e) => {
-                                if (e.key === "Enter") {
-                                  saveListName();
-                                }
+                        <i className="pi pi-pencil"></i>
+                      </button>
 
-                                if (e.key === "Escape") {
-                                  setEditingListId(null);
-                                }
-                              }}
-                            />
-                            <button
-                              className="edit-button"
-                              onClick={() => startEditingList(list)}
-                            >
-                              <i className="pi pi-pencil"></i>
-                            </button>
-                            <button
-                              className="delete-button"
-                              onClick={() => deleteList(list.id)}
-                            >
-                              <i className="pi pi-trash"></i>
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <button
-                              className="menu-button"
-                              onClick={() => {
-                                setSelectedList(list);
-                                loadTasks(list.id);
-                              }}
-                            >
-                              {list.name}
-                            </button>
+                      <button
+                        className="delete-button"
+                        onClick={() => deleteList(list.id)}
+                      >
+                        <i className="pi pi-trash"></i>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
 
-                            <button
-                              className="edit-button"
-                              onClick={() => startEditingList(list)}
-                            >
-                              <i className="pi pi-pencil"></i>
-                            </button>
-
-                            <button
-                              className="delete-button"
-                              onClick={() => deleteList(list.id)}
-                            >
-                              <i className="pi pi-trash"></i>
-                            </button>
-                          </>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )
-              }
+              <button
+                className="action-button"
+                onClick={() => {
+                  setEditingList(null);
+                  setListName("");
+                  setShowListDialog(true);
+                }}
+              >
+                + New List
+              </button>
             </div>
           </div>
           <div className="window">
