@@ -95,27 +95,6 @@ export default function SettingsPage() {
               </div>
             </div>
           </div>
-          <div className="window">
-            <div className="window-title">
-              Done Tasks Archive
-            </div>
-            <div className="window-content">
-              <p>
-                Completed tasks remain here for
-                30 days before automatic removal.
-              </p>
-              <div className="done-task-list">
-                <div className="done-task-item">
-                  <span>
-                    Example Completed Task
-                  </span>
-                  <button className="warning-button">
-                    Delete Permanently
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

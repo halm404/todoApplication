@@ -54,7 +54,8 @@ a {
 .window,
 .nav-button,
 .warning-button,
-.p-dialog {
+.p-dialog,
+.pixel-input {
     font-weight: 100;
     font-family: var(--font-pixel);
     color: var(--secondary-color);

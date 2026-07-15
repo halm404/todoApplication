@@ -40,7 +40,7 @@
 .action-button {
     width: 100%;
     padding: .3rem .6rem;
-    margin-bottom: 8px;
+    margin: 8px 0px;
     border: var(--action-button-border);
     background-color: var(--action-button-bg);
     color: var(--action-button-color);

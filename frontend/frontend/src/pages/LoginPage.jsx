@@ -84,6 +84,7 @@ export default function LoginPage() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Username"
+                  className="pixel-input"
                 />
                 <label>Password</label>
                 <input
@@ -91,6 +92,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
+                  className="pixel-input"
                 />
               </div>
               <div>
