@@ -79,7 +79,7 @@
     --list-items-border: 2px solid rgb(135, 92, 5);
     --lists-task-color: rgb(62, 52, 37);
 
-    --lists-input-background-focus: #bdd68b;
+    --lists-input-background-focus: #a1bf6a;
     --lists-input-border-top: 2px solid #899f26;
     --lists-input-border-left: 2px solid #30450e;
 
@@ -188,10 +188,10 @@
 }
 
 .theme-retro {
-    --body-pattern-primary: #1a1a20;
-    --body-pattern-secondary: #121239;
+    --body-pattern-primary: #171727;
+    --body-pattern-secondary: #61456b;
 
-    --third-background: #6E1F98;
+    --third-background: #231c27;
 
     --primary-background: #D5306C;
     --secondary-background: #D5306C;
@@ -201,12 +201,12 @@
 
     --border-primary: 2px solid #de3f2a;
 
-    --logo-pattern-primary: #FFBD42;
-    --logo-pattern-secondary: #1F1F9E;
+    --logo-pattern-primary: #bf7c00;
+    --logo-pattern-secondary: #343492;
     --logo-header: #6E1F98s;
     --logo-header-shadow: 1px 1px 0 var(--primary-color);
 
-    --window-background: rgb(33, 30, 27);
+    --window-background: rgb(37, 33, 30);
 
     --dialog-background: rgb(27, 26, 24);
 

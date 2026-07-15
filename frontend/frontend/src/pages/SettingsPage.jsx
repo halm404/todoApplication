@@ -42,9 +42,6 @@ export default function SettingsPage() {
             >
               Back to Home
             </Link>
-            <button className="menu-button">
-              Done Tasks
-            </button>
           </div>
         </div>
         <div className="settings-content">

@@ -298,7 +298,7 @@
     align-self: center;
     border: var(--save-button-border);
     background: var(--save-button-bg);
-    color: var(--save-button-hover-color);
+    color: var(--menu-button-color);
     clip-path: var(--corner-pixel);
     box-shadow: var(--button-shadow);
 
