@@ -87,7 +87,7 @@
 .menu-button {
     width: 100%;
     margin-bottom: 8px;
-    padding: .3rem .6rem;
+    padding: .2rem .2rem;
     border: var(--menu-button-border);
     color: var(--menu-button-color);
     background: var(--menu-button-bg);
@@ -161,6 +161,12 @@
     color: var(--primary-color);
 }
 
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 .task-form {
     display: flex;
     flex-direction: column;
@@ -226,7 +232,7 @@
     width: 100%;
     color: var(--lists-task-color);
     font-weight: 100;
-    gap: 1rem;
+    gap: .5rem;
 }
 
 .tasks-list {
@@ -264,11 +270,33 @@
     transform: translateY(-2px);
 }
 
+.edit-button {
+    padding: .3rem .3rem;
+    height: fit-content;
+    align-self: center;
+    border: var(--save-button-border);
+    background: var(--save-button-bg);
+    color: var(--save-button-hover-color);
+    clip-path: var(--corner-pixel);
+    box-shadow: var(--button-shadow);
+
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
+.edit-button:hover {
+    background: var(--save-button-hover-bg);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
 .lists-items {
     display: flex;
     flex-direction: row;
     width: 100%;
     text-align: left;
+    gap: .5rem;
 }
 
 .lists-list {

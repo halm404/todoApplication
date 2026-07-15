@@ -212,12 +212,12 @@
     --save-button-color: #23211b;
     --save-button-hover-bg: rgb(48, 76, 16);
     --save-button-hover-color: #f8f7ff;
-    --save-button-border: 2px solid rgb(40, 61, 13);
+    --save-button-border: 2px solid rgb(45, 75, 7);
 
     --menu-button-bg: #FFBD42;
     --menu-button-color: #282622;
     --menu-button-hover-bg: #bd8721;
-    --menu-button-border: 2px solid rgb(87, 60, 23);
+    --menu-button-border: 2px solid rgb(163, 108, 30);
 
     --inputfield-bg: rgb(41, 38, 34);
     --inputfield-color: #e3ddce;

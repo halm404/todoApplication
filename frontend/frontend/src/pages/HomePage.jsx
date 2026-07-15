@@ -21,6 +21,8 @@ export default function HomePage() {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDeadline, setTaskDeadline] = useState("");
 
+  const [editingTask, setEditingTask] = useState(null);
+
   useEffect(() => {
     loadLists();
   }, []);
@@ -121,33 +123,47 @@ export default function HomePage() {
     }
 
     try {
+      const isEditing = editingTask !== null;
+
       const response = await authenticatedFetch(
-        `http://localhost:8000/api/lists/${selectedList.id}/tasks/`,
+        isEditing
+          ? `http://localhost:8000/api/tasks/${editingTask.id}/`
+          : `http://localhost:8000/api/lists/${selectedList.id}/tasks/`,
         {
-          method: "POST",
+          method: isEditing ? "PUT" : "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
             title: taskTitle,
             deadline: taskDeadline || getToday(),
-            description: "",
-            completed: false,
+            completed: isEditing ? editingTask.completed : false,
+            completed_at: isEditing ? editingTask.completed_at : null,
+            todo_list: selectedList.id,
           }),
         }
       );
 
-      const newTask = await response.json();
+      const task = await response.json();
 
       if (!response.ok) {
-        setError(newTask.error || "Could not create task.");
+        setError(task.error || "Could not save task.");
         return;
       }
 
-      setTasks(prev => [...prev, newTask]);
+      if (isEditing) {
+        setTasks(prev =>
+          prev.map(t => t.id === task.id ? task : t)
+        );
+      } else {
+        setTasks(prev => [...prev, task]);
+      }
+
+      setEditingTask(null);
       setTaskTitle("");
       setTaskDeadline("");
       setShowTaskModal(false);
+
     } catch {
       setError("Server unavailable.");
     }
@@ -188,6 +204,13 @@ export default function HomePage() {
     } catch {
       setError("Server unavailable.");
     }
+  }
+
+  function handleEditTask(task) {
+    setEditingTask(task);
+    setTaskTitle(task.title);
+    setTaskDeadline(task.deadline);
+    setShowTaskModal(true);
   }
 
   async function deleteTask(taskId) {
@@ -254,19 +277,19 @@ export default function HomePage() {
                 ) : (
                   <div className="list-container">
                     {lists.map((list) => (
-                      <button
+                      <div
                         key={list.id}
                         to={`/lists/${list.id}`}
-                        className="menu-button"
+                        className="lists-items"
                         onClick={() => {
                           setSelectedList(list);
                           loadTasks(list.id);
                         }}
                       >
-                        <div className="lists-items">
-                          <div className="lists-list">
-                            {list.name}
-                          </div>
+                        <div className="menu-button ">
+                          {list.name}
+                        </div>
+                        <div >
                           <button
                             type="button"
                             className="delete-button"
@@ -276,7 +299,7 @@ export default function HomePage() {
                             <i className="pi pi-trash"></i>
                           </button>
                         </div>
-                      </button>
+                      </div>
                     ))}
                   </div>
                 )
@@ -360,6 +383,12 @@ export default function HomePage() {
                           {task.deadline}
                         </div>
                         <button
+                          className="edit-button"
+                          onClick={() => handleEditTask(task)}
+                        >
+                          <i className="pi pi-pencil"></i>
+                        </button>
+                        <button
                           type="button"
                           className="delete-button"
                           aria-placeholder="Delete Task"
@@ -400,10 +429,13 @@ export default function HomePage() {
         </aside>
       </div >
       <Dialog
-        header="Add Task"
+        header={editingTask ? "Edit Task" : "Add Task"}
         visible={showTaskModal}
-        onHide={() => setShowTaskModal(false)}
-        draggable={true}
+        onHide={() => {
+          setEditingTask(null);
+          setShowTaskModal(false);
+        }}
+        draggable
       >
         <div className="window-content">
           <form className="task-form" onSubmit={handleCreateTask}>
@@ -425,7 +457,7 @@ export default function HomePage() {
             </div>
             <div className="modal-actions">
               <button type="submit" className="save-button">
-                Save
+                {editingTask ? "Save Changes" : "Create Task"}
               </button>
               <button
                 className="warning-button"
