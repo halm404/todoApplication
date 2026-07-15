@@ -321,6 +321,37 @@
     color: var(--primary-color);
 }
 
+.filters-button {
+    width: 100%;
+    padding: .2rem .2rem;
+    margin: .2rem 0rem;
+    border: var(--nav-button-color);
+    color: var(--nav-button-color);
+    background: var(--nav-button-bg);
+    clip-path: var(--corner-pixel);
+    box-shadow: var(--button-shadow);
+
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
+.filters-button:hover {
+    background: var(--nav-button-hover-bg);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.filters-button.selected-filter {
+    background-color: red;
+}
+
+.filter-dropdown {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
 @media (max-width: 1450px) {
     .homepage {
         width: 95%;

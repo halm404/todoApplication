@@ -55,7 +55,8 @@ a {
 .nav-button,
 .warning-button,
 .p-dialog,
-.pixel-input {
+.pixel-input,
+.filters-button {
     font-weight: 100;
     font-family: var(--font-pixel);
     color: var(--secondary-color);
@@ -69,7 +70,8 @@ a {
 .p-dropdown-panel,
 .logout-button,
 .warning-button,
-.delete-button {
+.delete-button,
+.filters-button {
     cursor: pointer;
 }
 

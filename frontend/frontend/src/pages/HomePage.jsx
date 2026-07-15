@@ -1,6 +1,6 @@
 import "../styles/HomePage.css";
 import { useEffect, useState } from "react";
-import { Checkbox } from 'primereact/checkbox';
+import { Dropdown } from "primereact/dropdown";
 import { Dialog } from "primereact/dialog";
 import Navbar from "../components/Navbar";
 import { authenticatedFetch } from "../api";
@@ -26,6 +26,25 @@ export default function HomePage() {
 
   const [editingListId, setEditingListId] = useState(null);
   const [editingListName, setEditingListName] = useState("");
+
+  const [taskFilter, setTaskFilter] = useState("all");
+
+  const filterOptions = [
+    { label: "All", value: "all" },
+    { label: "Active", value: "active" },
+    { label: "Completed", value: "completed" },
+  ];
+
+  const filteredTasks = tasks.filter(task => {
+    switch (taskFilter) {
+      case "active":
+        return !task.completed;
+      case "completed":
+        return task.completed;
+      default:
+        return true;
+    }
+  });
 
   function handleEditTask(task) {
     setEditingTask(task);
@@ -333,7 +352,7 @@ export default function HomePage() {
         </div>
       </header>
       <div className="main-layout">
-        <aside className="sidebar-left">
+        <div className="sidebar-left">
           <div className="window">
             <div className="window-title">
               Lists
@@ -394,7 +413,6 @@ export default function HomePage() {
                   ))}
                 </div>
               )}
-
               <button
                 className="action-button"
                 onClick={() => {
@@ -407,27 +425,20 @@ export default function HomePage() {
               </button>
             </div>
           </div>
-          <div className="window">
-            <div className="window-title">
-              Filters
-            </div>
-            <div className="window-content">
-              <button className="menu-button">
-                Active
-              </button>
-              <button className="menu-button">
-                Completed
-              </button>
-              <button className="menu-button">
-                All
-              </button>
-            </div>
-          </div>
-        </aside>
+
+        </div>
         <main className="content">
           <div className="window large-window">
-            <div className="window-title">
-              {selectedList ? selectedList.name : "Current List"}
+            <div className="window-title filter-dropdown">
+              <div className="lists-items">
+                {selectedList ? selectedList.name : "Current List"}
+              </div>
+              <Dropdown
+                value={taskFilter}
+                options={filterOptions}
+                onChange={(e) => setTaskFilter(e.value)}
+                placeholder="Filter tasks"
+              />
             </div>
             <div className="window-content">
               <button
@@ -449,9 +460,13 @@ export default function HomePage() {
                 <div className="empty-message">
                   This list has no tasks.
                 </div>
+              ) : filteredTasks.length === 0 ? (
+                <div className="empty-message">
+                  No tasks match the selected filter.
+                </div>
               ) : (
                 <div>
-                  {tasks.map(task => (
+                  {filteredTasks.map(task => (
                     <div
                       key={task.id}
                       className={`tasks-list ${task.completed ? "task-completed" : ""
@@ -499,7 +514,7 @@ export default function HomePage() {
             </div>
           </div>
         </main>
-        <aside className="sidebar-right">
+        <div className="sidebar-right">
           <div className="window">
             <div className="window-title">
               Upcoming
@@ -514,14 +529,14 @@ export default function HomePage() {
             </div>
             <div className="window-content">
               <div className="stat-row">
-                Active: 0
+                Active:
               </div>
               <div className="stat-row">
-                Done: 0
+                Done:
               </div>
             </div>
           </div>
-        </aside>
+        </div>
       </div >
       <Dialog
         header={editingTask ? "Edit Task" : "Add Task"}
@@ -555,8 +570,14 @@ export default function HomePage() {
                 {editingTask ? "Save Changes" : "Create Task"}
               </button>
               <button
+                type="button"
                 className="warning-button"
-                onClick={() => setShowTaskModal(false)}
+                onClick={() => {
+                  setEditingTask(null);
+                  setTaskTitle("");
+                  setTaskDeadline("");
+                  setShowTaskModal(false);
+                }}
               >
                 Cancel
               </button>
