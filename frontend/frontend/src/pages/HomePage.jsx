@@ -22,6 +22,17 @@ export default function HomePage() {
   const [taskDeadline, setTaskDeadline] = useState("");
 
   const [editingTask, setEditingTask] = useState(null);
+  const [editingList, setEditingList] = useState(null);
+
+  const [editingListId, setEditingListId] = useState(null);
+  const [editingListName, setEditingListName] = useState("");
+
+  function handleEditTask(task) {
+    setEditingTask(task);
+    setTaskTitle(task.title);
+    setTaskDeadline(task.deadline);
+    setShowTaskModal(true);
+  }
 
   useEffect(() => {
     loadLists();
@@ -76,10 +87,14 @@ export default function HomePage() {
     }
 
     try {
+      const isEditing = editingList !== null;
+
       const response = await authenticatedFetch(
-        "http://localhost:8000/api/lists/",
+        isEditing
+          ? `http://localhost:8000/api/lists/${editingList.id}/`
+          : "http://localhost:8000/api/lists/",
         {
-          method: "POST",
+          method: isEditing ? "PUT" : "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -89,19 +104,31 @@ export default function HomePage() {
         }
       );
 
-      const newList = await response.json();
+      const list = await response.json();
 
       if (!response.ok) {
-        setError(newList.error || "Could not create list.");
+        setError(list.error || "Could not save list.");
         return;
       }
 
-      setLists(prev => [...prev, newList]);
-      setSelectedList(newList);
-      setTasks([]);
+      if (isEditing) {
+        setLists(prev =>
+          prev.map(l => l.id === list.id ? list : l)
+        );
 
+        if (selectedList?.id === list.id) {
+          setSelectedList(list);
+        }
+      } else {
+        setLists(prev => [...prev, list]);
+        setSelectedList(list);
+        setTasks([]);
+      }
+
+      setEditingList(null);
       setListName("");
       setShowListDialog(false);
+
     } catch {
       setError("Could not connect to the server.");
     }
@@ -206,13 +233,6 @@ export default function HomePage() {
     }
   }
 
-  function handleEditTask(task) {
-    setEditingTask(task);
-    setTaskTitle(task.title);
-    setTaskDeadline(task.deadline);
-    setShowTaskModal(true);
-  }
-
   async function deleteTask(taskId) {
     try {
       const response = await authenticatedFetch(
@@ -253,6 +273,56 @@ export default function HomePage() {
     }
   }
 
+  function startEditingList(list) {
+    setEditingListId(list.id);
+    setEditingListName(list.name);
+  }
+
+  async function saveListName() {
+    if (!editingListName.trim()) {
+      setEditingListId(null);
+      return;
+    }
+
+    try {
+      const response = await authenticatedFetch(
+        `http://localhost:8000/api/lists/${editingListId}/`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: editingListName,
+          }),
+        }
+      );
+
+      const updatedList = await response.json();
+
+      if (!response.ok) {
+        setError(updatedList.error || "Could not update list.");
+        return;
+      }
+
+      setLists(prev =>
+        prev.map(list =>
+          list.id === updatedList.id ? updatedList : list
+        )
+      );
+
+      if (selectedList?.id === updatedList.id) {
+        setSelectedList(updatedList);
+      }
+
+      setEditingListId(null);
+      setEditingListName("");
+
+    } catch {
+      setError("Server unavailable.");
+    }
+  }
+
   return (
     <div className="page">
       <Navbar />
@@ -279,37 +349,71 @@ export default function HomePage() {
                     {lists.map((list) => (
                       <div
                         key={list.id}
-                        to={`/lists/${list.id}`}
                         className="lists-items"
-                        onClick={() => {
-                          setSelectedList(list);
-                          loadTasks(list.id);
-                        }}
                       >
-                        <div className="menu-button ">
-                          {list.name}
-                        </div>
-                        <div >
-                          <button
-                            type="button"
-                            className="delete-button"
-                            aria-placeholder="Delete List"
-                            onClick={() => deleteList(list.id)}
-                          >
-                            <i className="pi pi-trash"></i>
-                          </button>
-                        </div>
+                        {editingListId === list.id ? (
+                          <>
+                            <input
+                              autoFocus
+                              className="pixel-input edit-field"
+                              value={editingListName}
+                              onChange={(e) => setEditingListName(e.target.value)}
+                              onBlur={saveListName}
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  saveListName();
+                                }
+
+                                if (e.key === "Escape") {
+                                  setEditingListId(null);
+                                }
+                              }}
+                            />
+                            <button
+                              className="edit-button"
+                              onClick={() => startEditingList(list)}
+                            >
+                              <i className="pi pi-pencil"></i>
+                            </button>
+                            <button
+                              className="delete-button"
+                              onClick={() => deleteList(list.id)}
+                            >
+                              <i className="pi pi-trash"></i>
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              className="menu-button"
+                              onClick={() => {
+                                setSelectedList(list);
+                                loadTasks(list.id);
+                              }}
+                            >
+                              {list.name}
+                            </button>
+
+                            <button
+                              className="edit-button"
+                              onClick={() => startEditingList(list)}
+                            >
+                              <i className="pi pi-pencil"></i>
+                            </button>
+
+                            <button
+                              className="delete-button"
+                              onClick={() => deleteList(list.id)}
+                            >
+                              <i className="pi pi-trash"></i>
+                            </button>
+                          </>
+                        )}
                       </div>
                     ))}
                   </div>
                 )
               }
-              <button
-                className="action-button"
-                onClick={() => setShowListDialog(true)}
-              >
-                + New List
-              </button>
             </div>
           </div>
           <div className="window">
@@ -470,7 +574,7 @@ export default function HomePage() {
         </div>
       </Dialog>
       <Dialog
-        header="New List"
+        header={editingList ? "Edit List" : "New List"}
         visible={showListDialog}
         onHide={() => setShowListDialog(false)}
         draggable={true}
@@ -497,7 +601,7 @@ export default function HomePage() {
                   type="submit"
                   className="save-button"
                 >
-                  Create list
+                  {editingList ? "Save Changes" : "Create List"}
                 </button>
                 <button
                   type="button"

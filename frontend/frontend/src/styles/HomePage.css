@@ -86,7 +86,6 @@
 
 .menu-button {
     width: 100%;
-    margin-bottom: 8px;
     padding: .2rem .2rem;
     border: var(--menu-button-border);
     color: var(--menu-button-color);
@@ -103,6 +102,10 @@
     background: var(--menu-button-hover-bg);
     color: var(--primary-color);
     transform: translateY(-2px);
+}
+
+.lists-items .pixel-input {
+    width: 9.5rem;
 }
 
 .empty-message {
@@ -302,6 +305,20 @@
 .lists-list {
     width: 100%;
     margin: .3rem .2rem;
+}
+
+.edit-field {
+    width: 100%;
+    padding: .2rem .2rem;
+    border: var(--menu-button-border);
+    color: var(--menu-button-color);
+    background: var(--menu-button-bg);
+    clip-path: var(--corner-pixel);
+}
+
+.edit-field:hover {
+    background: var(--menu-button-hover-bg);
+    color: var(--primary-color);
 }
 
 @media (max-width: 1450px) {
