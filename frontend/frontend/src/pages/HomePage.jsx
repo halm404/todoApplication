@@ -299,7 +299,7 @@ export default function HomePage() {
                           className="tasks-name"
                           style={{
                             textDecoration: task.completed ? "line-through" : "none",
-                            opacity: task.completed ? 0.6 : 1,
+                            opacity: task.completed ? 0.8 : 1,
                           }}
                         >
                           {task.title}

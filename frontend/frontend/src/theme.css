@@ -68,6 +68,20 @@
     --warning-button-color: white;
     --warning-button-hover-background: #861f14;
     --warning-button-border: 2px solid #770d06;
+
+    --list-items-background-primary: rgb(183, 151, 99);
+    --list-items-background-secondary: rgb(182, 128, 27);
+    --list-items-border: 2px solid rgb(135, 92, 5);
+    --lists-task-color: rgb(62, 52, 37);
+
+    --checkbox-bg: rgb(225, 168, 83);
+    --checkbox-hover-bg: rgb(161, 105, 21);
+
+    --border-top: 2px solid rgb(170, 118, 14);
+    --border-left: 2px solid rgb(126, 89, 13);
+
+    --border-top-active: 2px solid rgb(116, 83, 17);
+    --border-left-active: 2px solid rgb(37, 26, 5);
 }
 
 .theme-dark {
@@ -225,4 +239,18 @@
     --warning-button-color: white;
     --warning-button-hover-background: #861f14;
     --warning-button-border: 2px solid #770d06;
+
+    --list-items-background-primary: rgb(20, 19, 49);
+    --list-items-background-secondary: rgb(68, 6, 90);
+    --list-items-border: 2px solid rgb(130, 5, 86);
+    --lists-task-color: rgb(239, 239, 239);
+
+    --checkbox-bg: rgb(234, 213, 49);
+    --checkbox-hover-bg: rgb(163, 116, 45);
+
+    --border-top: 2px solid rgb(221, 181, 21);
+    --border-left: 2px solid rgb(126, 89, 13);
+
+    --border-top-active: 2px solid rgb(116, 83, 17);
+    --border-left-active: 2px solid rgb(37, 26, 5);
 }

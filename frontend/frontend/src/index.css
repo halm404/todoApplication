@@ -36,21 +36,27 @@ a {
 }
 
 .banner,
-.window,
 .modal-title-bar,
-.p-dialog,
+.logout-button {
+    font-family: var(--font-pixel);
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.action-button,
+.menu-button,
+.task-item,
+.p-dropdown-panel,
 .register-form,
 .login-form,
 .task-form,
-.nav-button,
-.action-button,
-.menu-button,
 .save-button,
-.logout-button,
+.window,
+.nav-button,
 .warning-button,
-.p-dropdown-panel {
+.p-dialog {
+    font-weight: 100;
     font-family: var(--font-pixel);
-    font-weight: 600;
     color: var(--secondary-color);
 }
 
@@ -227,11 +233,11 @@ a {
 }
 
 .task-item {
-
-
     display: flex;
     flex-direction: row;
     width: 100%;
+    color: var(--lists-task-color);
+    font-weight: 100;
 }
 
 .tasks-list {
