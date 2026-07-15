@@ -66,7 +66,8 @@ a {
 .save-button,
 .p-dropdown-panel,
 .logout-button,
-.warning-button {
+.warning-button,
+.delete-button {
     cursor: pointer;
 }
 
@@ -230,27 +231,4 @@ a {
 
 .logout-button:active {
     transform: translateY(1px);
-}
-
-.task-item {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    color: var(--lists-task-color);
-    font-weight: 100;
-}
-
-.tasks-list {
-    border: var(--border-primary);
-    background: var(--window-background);
-    clip-path: var(--corner-pixel);
-    margin: 1rem 0rem;
-}
-
-.tasks-name {
-    width: 100%;
-}
-
-.tasks-deadline {
-    text-align: right;
 }

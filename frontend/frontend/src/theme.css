@@ -237,11 +237,11 @@
 
     --warning-button-background: #9d2626;
     --warning-button-color: white;
-    --warning-button-hover-background: #861f14;
-    --warning-button-border: 2px solid #770d06;
+    --warning-button-hover-background: #55150e;
+    --warning-button-border: 2px solid #4b0904;
 
     --list-items-background-primary: rgb(20, 19, 49);
-    --list-items-background-secondary: rgb(68, 6, 90);
+    --list-items-background-secondary: rgb(70, 7, 93);
     --list-items-border: 2px solid rgb(130, 5, 86);
     --lists-task-color: rgb(239, 239, 239);
 

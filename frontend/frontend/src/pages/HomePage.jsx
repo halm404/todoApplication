@@ -190,6 +190,46 @@ export default function HomePage() {
     }
   }
 
+  async function deleteTask(taskId) {
+    try {
+      const response = await authenticatedFetch(
+        `http://localhost:8000/api/tasks/${taskId}/`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        setError("Could not delete task.");
+        return;
+      }
+
+      setTasks(prev => prev.filter(task => task.id !== taskId));
+    } catch {
+      setError("Server unavailable.");
+    }
+  }
+
+  async function deleteList(listId) {
+    try {
+      const response = await authenticatedFetch(
+        `http://localhost:8000/api/lists/${listId}/`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        setError("Could not delete list.");
+        return;
+      }
+
+      setLists(prev => prev.filter(list => list.id !== listId));
+    } catch {
+      setError("Server unavailable.");
+    }
+  }
+
   return (
     <div className="page">
       <Navbar />
@@ -223,7 +263,19 @@ export default function HomePage() {
                           loadTasks(list.id);
                         }}
                       >
-                        {list.name}
+                        <div className="lists-items">
+                          <div className="lists-list">
+                            {list.name}
+                          </div>
+                          <button
+                            type="button"
+                            className="delete-button"
+                            aria-placeholder="Delete List"
+                            onClick={() => deleteList(list.id)}
+                          >
+                            <i className="pi pi-trash"></i>
+                          </button>
+                        </div>
                       </button>
                     ))}
                   </div>
@@ -307,6 +359,14 @@ export default function HomePage() {
                         <div className="tasks-deadline">
                           {task.deadline}
                         </div>
+                        <button
+                          type="button"
+                          className="delete-button"
+                          aria-placeholder="Delete Task"
+                          onClick={() => deleteTask(task.id)}
+                        >
+                          <i className="pi pi-trash"></i>
+                        </button>
                       </div>
                     </div>
                   ))}
