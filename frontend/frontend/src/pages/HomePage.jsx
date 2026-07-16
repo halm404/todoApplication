@@ -52,6 +52,8 @@ export default function HomePage() {
   const activeTaskCount = tasks.filter(task => !task.completed).length;
   const completedTaskCount = tasks.filter(task => task.completed).length;
 
+  const [upcomingTasks, setUpcomingTasks] = useState([]);
+
   function confirmDeleteList(list) {
     setListToDelete(list);
     setShowDeleteListDialog(true);
@@ -253,6 +255,7 @@ export default function HomePage() {
       setTaskTitle("");
       setTaskDeadline("");
       setShowTaskModal(false);
+      loadUpcomingTasks();
 
     } catch {
       setError("Server unavailable.");
@@ -290,6 +293,7 @@ export default function HomePage() {
       setTasks(prev =>
         prev.map(t => t.id === updatedTask.id ? updatedTask : t)
       );
+      loadUpcomingTasks();
 
     } catch {
       setError("Server unavailable.");
@@ -311,6 +315,7 @@ export default function HomePage() {
       }
 
       setTasks(prev => prev.filter(task => task.id !== taskId));
+      loadUpcomingTasks();
     } catch {
       setError("Server unavailable.");
     }
@@ -385,6 +390,50 @@ export default function HomePage() {
       setError("Server unavailable.");
     }
   }
+
+  async function loadUpcomingTasks() {
+    try {
+      const responses = await Promise.all(
+        lists.map(list =>
+          authenticatedFetch(
+            `http://localhost:8000/api/lists/${list.id}/tasks/`
+          ).then(res => res.json())
+        )
+      );
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const tomorrow = new Date();
+      tomorrow.setHours(0, 0, 0, 0);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      const upcoming = responses
+        .flat()
+        .filter(task => {
+          const deadline = new Date(task.deadline);
+          deadline.setHours(0, 0, 0, 0);
+
+          return (
+            deadline.getTime() === today.getTime() ||
+            deadline.getTime() === tomorrow.getTime()
+          );
+        })
+        .sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+
+      setUpcomingTasks(upcoming);
+    } catch {
+      console.error("Could not load upcoming tasks.");
+    }
+  }
+
+  useEffect(() => {
+    if (lists.length > 0) {
+      loadUpcomingTasks();
+    } else {
+      setUpcomingTasks([]);
+    }
+  }, [lists]);
 
   return (
     <div className="page">
@@ -564,7 +613,24 @@ export default function HomePage() {
               Upcoming
             </div>
             <div className="window-content">
-              No upcoming tasks
+              {upcomingTasks.length === 0 ? (
+                <div className="empty-message">
+                  No upcoming tasks
+                </div>
+              ) : (
+                upcomingTasks.map(task => (
+                  <div className="tasks-list">
+                    <div className=" task-item">
+                      <div className="tasks-name">
+                        {task.title}
+                      </div>
+                      <div className="tasks-deadline">
+                        {task.deadline}
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
           <div className="window">
