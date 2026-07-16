@@ -49,6 +49,9 @@ export default function HomePage() {
     }
   });
 
+  const activeTaskCount = tasks.filter(task => !task.completed).length;
+  const completedTaskCount = tasks.filter(task => task.completed).length;
+
   function confirmDeleteList(list) {
     setListToDelete(list);
     setShowDeleteListDialog(true);
@@ -566,15 +569,26 @@ export default function HomePage() {
           </div>
           <div className="window">
             <div className="window-title">
-              Statistics
+              Tasks Statistics
             </div>
             <div className="window-content">
-              <div className="stat-row">
-                Active:
-              </div>
-              <div className="stat-row">
-                Done:
-              </div>
+              {!selectedList ? (
+                <div className="empty-message">
+                  Select a list
+                </div>
+              ) : (
+                <>
+                  <div className="stat-row">
+                    Active: {activeTaskCount}
+                  </div>
+                  <div className="stat-row">
+                    Completed: {completedTaskCount}
+                  </div>
+                  <div className="stat-row">
+                    Total: {tasks.length}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
