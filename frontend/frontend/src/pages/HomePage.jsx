@@ -42,8 +42,8 @@ export default function HomePage() {
   const [taskSort, setTaskSort] = useState("deadline");
   const sortOptions = [
     { label: "Deadline", value: "deadline" },
-    { label: "Name (A-Z)", value: "nameAsc" },
-    { label: "Name (Z-A)", value: "nameDesc" },
+    { label: "Ascending", value: "nameAsc" },
+    { label: "Descending", value: "nameDesc" },
   ];
 
   const filteredTasks = tasks
@@ -558,7 +558,7 @@ export default function HomePage() {
           </div>
 
         </div>
-        <main className="content">
+        <div className="content">
           <div className="window large-window">
             <div className="window-title">
               <div className="list-title">
@@ -656,7 +656,7 @@ export default function HomePage() {
               )}
             </div>
           </div>
-        </main>
+        </div>
         <div className="sidebar-right">
           <div className="window">
             <div className="window-title">
@@ -670,7 +670,7 @@ export default function HomePage() {
               ) : (
                 upcomingTasks.map(task => (
                   <div key={task.id} className="tasks-list">
-                    <div className=" task-item">
+                    <div className="task-item-upcoming">
                       <div className="tasks-name">
                         {task.title}
                       </div>

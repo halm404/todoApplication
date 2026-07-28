@@ -10,13 +10,14 @@
     gap: 24px;
 
     grid-template-columns:
-        280px 1fr 280px;
+        18rem 42.7rem 18rem;
 }
 
 .window {
     border: var(--border-primary);
     background: var(--window-background);
     clip-path: var(--corner-pixel);
+    width: inherit;
 }
 
 .window-title {
@@ -245,7 +246,15 @@
 
 .complete-button .pi {
     font-size: .6rem;
-    font-weight: bold;
+}
+
+.task-item-upcoming {
+    display: flex;
+    flex-direction: row;
+    width: 15rem;
+    color: var(--lists-task-color);
+    font-weight: 100;
+    gap: .5rem;
 }
 
 .task-item {
@@ -264,7 +273,10 @@
 }
 
 .tasks-name {
-    width: 100%;
+    width: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .tasks-deadline {
@@ -390,19 +402,19 @@
 }
 
 .list-title {
-    font-weight: bold;
-    width: 12rem;
+    width: 19rem;
 }
 
 .controls {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    font-size: .7rem;
 }
 
 .filter-dropdown,
 .sort-dropdown {
-    width: 10rem;
+    max-width: 6rem;
 }
 
 .controls span {
