@@ -326,6 +326,24 @@
     margin: .3rem .2rem;
 }
 
+.active-list {
+    background: var(--menu-button-hover-bg);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    width: 100%;
+    padding: .2rem .2rem;
+    border: var(--menu-button-border-active);
+    clip-path: var(--corner-pixel);
+    box-shadow:
+        inset 0 2px 0 rgba(0, 0, 0, 0.49),
+        inset 0 -3px 0 rgba(239, 239, 239, 0.317),
+        -2px 0 0 rgba(0, 0, 0, 0.69),
+        2px 0 0 rgba(0, 0, 0, 0.307);
+    transition:
+        transform 0.1s ease,
+        background-color 0.1s ease;
+}
+
 .edit-field {
     width: 100%;
     padding: .2rem .2rem;
@@ -365,10 +383,30 @@
     background-color: red;
 }
 
-.filter-dropdown {
+.window-title {
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-title {
+    font-weight: bold;
+    width: 12rem;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.filter-dropdown,
+.sort-dropdown {
+    width: 10rem;
+}
+
+.controls span {
+    white-space: nowrap;
 }
 
 .p-toast {
@@ -382,7 +420,7 @@
 
 .p-toast .p-toast-message {
     background: var(--toast-confirmation-message-bg);
-    color: var(--inputfield-color);
+    color: var(--cancel-button-color);
     padding: 1rem;
 }
 

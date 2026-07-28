@@ -41,7 +41,7 @@ export default function HomePage() {
 
   const [taskSort, setTaskSort] = useState("deadline");
   const sortOptions = [
-    { label: "Deadline (Closest)", value: "deadline" },
+    { label: "Deadline", value: "deadline" },
     { label: "Name (A-Z)", value: "nameAsc" },
     { label: "Name (Z-A)", value: "nameDesc" },
   ];
@@ -518,7 +518,8 @@ export default function HomePage() {
                         />
                       ) : (
                         <button
-                          className="menu-button"
+                          className={`menu-button ${selectedList?.id === list.id ? "active-list" : ""
+                            }`}
                           onClick={() => {
                             setSelectedList(list);
                             loadTasks(list.id);
@@ -561,28 +562,30 @@ export default function HomePage() {
         </div>
         <main className="content">
           <div className="window large-window">
-            <div className="window-title filter-dropdown">
-              <div className="lists-items">
+            <div className="window-title">
+              <div className="list-title">
                 {selectedList ? selectedList.name : "Current List"}
               </div>
-              Filter:
-              <Dropdown
-                value={taskFilter}
-                options={filterOptions}
-                onChange={(e) => setTaskFilter(e.value)}
-                placeholder="Filter tasks"
-                className="filter-dropdown"
-              />
-              Sort by:
-              <Dropdown
-                value={taskSort}
-                options={sortOptions}
-                onChange={(e) => setTaskSort(e.value)}
-                placeholder="Sort tasks"
-                className="sort-dropdown"
-              />
+
+              <div className="controls">
+                <span>Filter:</span>
+                <Dropdown
+                  value={taskFilter}
+                  options={filterOptions}
+                  onChange={(e) => setTaskFilter(e.value)}
+                  className="filter-dropdown"
+                />
+
+                <span>Sort by:</span>
+                <Dropdown
+                  value={taskSort}
+                  options={sortOptions}
+                  onChange={(e) => setTaskSort(e.value)}
+                  className="sort-dropdown"
+                />
+              </div>
             </div>
-            <div className="window-content">
+            <div className="window-content ">
               <button
                 className="action-button"
                 disabled={!selectedList}

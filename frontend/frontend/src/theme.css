@@ -188,7 +188,7 @@
     --border-top-active: 2px solid rgb(116, 83, 17);
     --border-left-active: 2px solid rgb(37, 26, 5);
 
-    --toast-confirmation-message-bg: rgb(43, 84, 115);
+    --toast-confirmation-message-bg: rgb(158, 196, 224);
 
 }
 
@@ -241,6 +241,7 @@
     --menu-button-color: #282622;
     --menu-button-hover-bg: #bd8721;
     --menu-button-border: 2px solid rgb(236, 232, 227);
+    --menu-button-border-active: 2px solid rgb(173, 100, 36);
 
     --cancel-button-bg: #fafafa;
     --cancel-button-color: #161616;
