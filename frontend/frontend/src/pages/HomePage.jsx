@@ -1,5 +1,6 @@
 import "../styles/HomePage.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { Toast } from 'primereact/toast';
 import { Dropdown } from "primereact/dropdown";
 import { Dialog } from "primereact/dialog";
 import Navbar from "../components/Navbar";
@@ -7,7 +8,7 @@ import { authenticatedFetch } from "../api";
 
 export default function HomePage() {
   const [showTaskModal, setShowTaskModal] = useState(false);
-
+  const toast = useRef(null);
   const [showListDialog, setShowListDialog] = useState(false);
 
   const [lists, setLists] = useState([]);
@@ -279,6 +280,13 @@ export default function HomePage() {
       setShowTaskModal(false);
       loadUpcomingTasks();
 
+      loadUpcomingTasks();
+
+      toast.current?.show({
+        severity: "success",
+        detail: `Task "${task?.title}" created.`,
+      });
+
     } catch {
       setError("Server unavailable.");
     }
@@ -336,8 +344,16 @@ export default function HomePage() {
         return;
       }
 
+      const deletedTask = tasks.find(task => task.id === taskId);
+
       setTasks(prev => prev.filter(task => task.id !== taskId));
       loadUpcomingTasks();
+
+      toast.current?.show({
+        severity: "success",
+        detail: `"${deletedTask?.title}" has been deleted.`,
+      });
+
     } catch {
       setError("Server unavailable.");
     }
@@ -460,6 +476,7 @@ export default function HomePage() {
   return (
     <div className="page">
       <Navbar />
+      <Toast ref={toast} />
       <header className="banner">
         <div className="banner-content">
           <h1>Todo Quest</h1>

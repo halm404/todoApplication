@@ -91,6 +91,8 @@
 
     --border-top-active: 2px solid rgb(116, 83, 17);
     --border-left-active: 2px solid rgb(37, 26, 5);
+
+    --toast-confirmation-message-bg: rgb(173, 227, 245);
 }
 
 .theme-dark {
@@ -185,6 +187,9 @@
 
     --border-top-active: 2px solid rgb(116, 83, 17);
     --border-left-active: 2px solid rgb(37, 26, 5);
+
+    --toast-confirmation-message-bg: rgb(43, 84, 115);
+
 }
 
 .theme-retro {
@@ -244,8 +249,8 @@
 
     --inputfield-bg: rgb(41, 38, 34);
     --inputfield-color: #000000;
-    --inputfield-hover-bg: rgb(179, 140, 43);
-    --inputfield-focus-bg: rgb(122, 97, 26);
+    --inputfield-hover-bg: rgb(202, 182, 4);
+    --inputfield-focus-bg: rgb(189, 171, 7);
     --inputfield-border: 2px solid #FFBD42;
 
     --dropdown-background: #D5306C;
@@ -268,7 +273,7 @@
     --list-items-border: 2px solid rgb(130, 5, 86);
     --lists-task-color: rgb(239, 239, 239);
 
-    --lists-input-background-focus: #ac6f19;
+    --lists-input-background-focus: #e59b33;
     --lists-input-border-top: 2px solid #745408;
     --lists-input-border-left: 2px solid #623d11;
 
@@ -280,4 +285,7 @@
 
     --border-top-active: 2px solid rgb(116, 83, 17);
     --border-left-active: 2px solid rgb(37, 26, 5);
+
+    --toast-confirmation-message-bg: rgb(164, 212, 238);
+
 }
