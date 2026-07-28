@@ -38,21 +38,43 @@ export default function HomePage() {
     { label: "Completed", value: "completed" },
   ];
 
-  const filteredTasks = tasks.filter(task => {
-    switch (taskFilter) {
-      case "active":
-        return !task.completed;
-      case "completed":
-        return task.completed;
-      default:
-        return true;
-    }
-  });
+  const [taskSort, setTaskSort] = useState("deadline");
+  const sortOptions = [
+    { label: "Deadline (Closest)", value: "deadline" },
+    { label: "Name (A-Z)", value: "nameAsc" },
+    { label: "Name (Z-A)", value: "nameDesc" },
+  ];
+
+  const filteredTasks = tasks
+    .filter(task => {
+      switch (taskFilter) {
+        case "active":
+          return !task.completed;
+        case "completed":
+          return task.completed;
+        default:
+          return true;
+      }
+    })
+    .sort((a, b) => {
+      switch (taskSort) {
+        case "nameAsc":
+          return a.title.localeCompare(b.title);
+
+        case "nameDesc":
+          return b.title.localeCompare(a.title);
+
+        case "deadline":
+        default:
+          return new Date(a.deadline) - new Date(b.deadline);
+      }
+    });
 
   const activeTaskCount = tasks.filter(task => !task.completed).length;
   const completedTaskCount = tasks.filter(task => task.completed).length;
 
   const [upcomingTasks, setUpcomingTasks] = useState([]);
+
 
   function confirmDeleteList(list) {
     setListToDelete(list);
@@ -526,11 +548,21 @@ export default function HomePage() {
               <div className="lists-items">
                 {selectedList ? selectedList.name : "Current List"}
               </div>
+              Filter:
               <Dropdown
                 value={taskFilter}
                 options={filterOptions}
                 onChange={(e) => setTaskFilter(e.value)}
                 placeholder="Filter tasks"
+                className="filter-dropdown"
+              />
+              Sort by:
+              <Dropdown
+                value={taskSort}
+                options={sortOptions}
+                onChange={(e) => setTaskSort(e.value)}
+                placeholder="Sort tasks"
+                className="sort-dropdown"
               />
             </div>
             <div className="window-content">
@@ -619,7 +651,7 @@ export default function HomePage() {
                 </div>
               ) : (
                 upcomingTasks.map(task => (
-                  <div className="tasks-list">
+                  <div key={task.id} className="tasks-list">
                     <div className=" task-item">
                       <div className="tasks-name">
                         {task.title}
