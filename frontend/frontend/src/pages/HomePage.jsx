@@ -120,6 +120,10 @@ export default function HomePage() {
 
       setListToDelete(null);
       setShowDeleteListDialog(false);
+      toast.current?.show({
+        severity: "success",
+        detail: `"${listToDelete?.name}" has been deleted.`,
+      });
 
     } catch {
       setError("Server unavailable.");
@@ -211,6 +215,10 @@ export default function HomePage() {
         setLists(prev => [...prev, list]);
         setSelectedList(list);
         setTasks([]);
+        toast.current?.show({
+          severity: "success",
+          detail: `"${list?.name}" has been created.`,
+        });
       }
 
       setEditingList(null);
@@ -270,8 +278,16 @@ export default function HomePage() {
         setTasks(prev =>
           prev.map(t => t.id === task.id ? task : t)
         );
+        toast.current?.show({
+          severity: "success",
+          detail: `Task "${task?.title}" updated.`,
+        });
       } else {
         setTasks(prev => [...prev, task]);
+        toast.current?.show({
+          severity: "success",
+          detail: `Task "${task?.title}" created.`,
+        });
       }
 
       setEditingTask(null);
@@ -282,10 +298,7 @@ export default function HomePage() {
 
       loadUpcomingTasks();
 
-      toast.current?.show({
-        severity: "success",
-        detail: `Task "${task?.title}" created.`,
-      });
+
 
     } catch {
       setError("Server unavailable.");
@@ -359,26 +372,6 @@ export default function HomePage() {
     }
   }
 
-  async function deleteList(listId) {
-    try {
-      const response = await authenticatedFetch(
-        `http://localhost:8000/api/lists/${listId}/`,
-        {
-          method: "DELETE",
-        }
-      );
-
-      if (!response.ok) {
-        setError("Could not delete list.");
-        return;
-      }
-
-      setLists(prev => prev.filter(list => list.id !== listId));
-    } catch {
-      setError("Server unavailable.");
-    }
-  }
-
   function startEditingList(list) {
     setEditingListId(list.id);
     setEditingListName(list.name);
@@ -423,6 +416,11 @@ export default function HomePage() {
 
       setEditingListId(null);
       setEditingListName("");
+
+      toast.current?.show({
+        severity: "success",
+        detail: `"${updatedList?.name}" has been updated.`,
+      });
 
     } catch {
       setError("Server unavailable.");
