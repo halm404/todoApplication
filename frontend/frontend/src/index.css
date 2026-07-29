@@ -115,7 +115,7 @@ a {
 }
 
 .page {
-    width: 1400px;
+    width: 90%;
     margin: 20px auto;
 }
 
@@ -148,12 +148,6 @@ a {
 
 .nav-button:active {
     transform: translateY(1px);
-}
-
-@media (max-width: 700px) {
-    .banner h1 {
-        font-size: 2rem;
-    }
 }
 
 .input-container {
@@ -234,4 +228,34 @@ a {
 
 .logout-button:active {
     transform: translateY(1px);
+}
+
+@media (max-width: 1000px) {
+
+    .banner,
+    .modal-title-bar,
+    .logout-button,
+    h1 {
+        font-family: var(--font-pixel);
+        font-weight: 100;
+        color: var(--secondary-color);
+    }
+
+    .banner h1 {
+        margin: 0;
+        font-size: 2rem;
+        color: var(--primary-color);
+        text-shadow: var(--logo-header-shadow);
+    }
+}
+
+@media (max-width: 900px) {
+    .page {
+        width: 97%;
+        margin: 1rem auto;
+    }
+
+    .banner h1 {
+        font-size: 2rem;
+    }
 }

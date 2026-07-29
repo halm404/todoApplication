@@ -560,27 +560,29 @@ export default function HomePage() {
         </div>
         <div className="content">
           <div className="window large-window">
-            <div className="window-title">
-              <div className="list-title">
+            <div className="window-title list-banner">
+              <div>
                 {selectedList ? selectedList.name : "Current List"}
               </div>
-
               <div className="controls">
-                <span>Filter:</span>
-                <Dropdown
-                  value={taskFilter}
-                  options={filterOptions}
-                  onChange={(e) => setTaskFilter(e.value)}
-                  className="filter-dropdown"
-                />
-
-                <span>Sort by:</span>
-                <Dropdown
-                  value={taskSort}
-                  options={sortOptions}
-                  onChange={(e) => setTaskSort(e.value)}
-                  className="sort-dropdown"
-                />
+                <div className="filter-sort-containers">
+                  Filter:
+                  <Dropdown
+                    value={taskFilter}
+                    options={filterOptions}
+                    onChange={(e) => setTaskFilter(e.value)}
+                    className="filter-dropdown"
+                  />
+                </div>
+                <div className="filter-sort-containers">
+                  Sort by:
+                  <Dropdown
+                    value={taskSort}
+                    options={sortOptions}
+                    onChange={(e) => setTaskSort(e.value)}
+                    className="sort-dropdown"
+                  />
+                </div>
               </div>
             </div>
             <div className="window-content ">
