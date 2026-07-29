@@ -58,7 +58,8 @@ a {
 .pixel-input,
 .filters-button,
 .cancel-button,
-.p-toast {
+.p-toast,
+.theme-button {
     font-weight: 100;
     font-family: var(--font-pixel);
     color: var(--secondary-color);
@@ -257,5 +258,9 @@ a {
 
     .banner h1 {
         font-size: 2rem;
+    }
+
+    .theme-button {
+        font-size: 1.8rem;
     }
 }

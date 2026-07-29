@@ -2,25 +2,8 @@ import "../styles/SettingsPage.css";
 import { Link } from "react-router";
 import Navbar from "../components/Navbar";
 import "../theme.css";
-import { useTheme } from "../contexts/ThemeContext";
-import { Dropdown } from "primereact/dropdown";
 
 export default function SettingsPage() {
-  const { theme, setTheme } = useTheme();
-  const themes = [
-    {
-      label: "Pastel",
-      value: "pastel"
-    },
-    {
-      label: "Moss",
-      value: "dark"
-    },
-    {
-      label: "Mushrooms",
-      value: "retro"
-    }
-  ];
   return (
     <div className="page">
       <Navbar />
@@ -45,26 +28,6 @@ export default function SettingsPage() {
           </div>
         </div>
         <div className="settings-content">
-          <div className="window">
-            <div className="window-title">
-              Theme
-            </div>
-            <div className="theme-container">
-              <label>
-                Theme
-              </label>
-              <div>
-                <Dropdown
-                  value={theme}
-                  options={themes}
-                  optionLabel="label"
-                  optionValue="value"
-                  onChange={(e) => setTheme(e.value)}
-                  placeholder="Select Theme"
-                />
-              </div>
-            </div>
-          </div>
           <div className="window">
             <div className="window-title">
               Change Password
